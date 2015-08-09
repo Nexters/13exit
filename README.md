@@ -16,6 +16,12 @@ Application Description.
 - Universal Image Loader
 
 # Client dependencies code
-<code>compile 'com.android.support:appcompat-v7:22.2.1'<p>compile 'com.google.android.gms:play-services-gcm:7.5.+'<p>compile 'com.google.code.gson:gson:2.2.+'<p>compile 'com.loopj.android:android-async-http:1.4.8'<p>compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'<p></code>
+```java
+compile 'com.android.support:appcompat-v7:22.2.1'
+compile 'com.google.android.gms:play-services-gcm:7.5.+'
+compile 'com.google.code.gson:gson:2.2.+'
+compile 'com.loopj.android:android-async-http:1.4.8'
+compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+```
 
 # Module in Server
