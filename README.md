@@ -8,12 +8,12 @@ Application Description.
 
 # Developer Enviroment
 - Client : Android(API ??), Android Studio v#.#.#
-- Server : Node.js + express.js  / Database - mySql
+- Server : AWS(ec2 - ubuntu) / Node.js + express.js  / mySql
 
 # Used android library
-- Gson
-- Loop Android Asynchronous Http Client <a href="http://loopj.com/android-async-http/">Link</a>
-- Universal Image Loader
+- Gson - Convertor between java object and JSON.  / <a href="https://github.com/google/gson">Link</a>
+- Loop Android Asynchronous Http Client - A Callback-Based Http Client Library for Android. / <a href="http://loopj.com/android-async-http/">Link</a>
+- Universal Image Loader - Loading, caching and displaying images on Android. / <a href="https://github.com/nostra13/Android-Universal-Image-Loader">Link</a>
 
 # Client dependencies code
 ```java
