@@ -11,7 +11,7 @@ import com.loopj.android.http.RequestParams;
 
 public class NetworkModel {
 	
-	public static String SERVER_URL = "http://52.69.130.243:8300/";
+	private static String SERVER_URL = "http://52.69.130.243:8300/";
 	
 	AsyncHttpClient client;
 	
