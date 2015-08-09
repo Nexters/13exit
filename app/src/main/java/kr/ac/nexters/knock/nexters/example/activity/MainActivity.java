@@ -12,6 +12,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -29,11 +30,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import java.io.File;
 
 import kr.ac.nexters.knock.R;
 import kr.ac.nexters.knock.network.IsSucceed;
 import kr.ac.nexters.knock.network.NetworkModel;
+import kr.ac.nexters.knock.tools.MyApplication;
 
 //硫붿씤 �븸�떚鍮꾪떚. 蹂�寃쏀븳 �썑 �슦 �겢由�->Android tools -> Clear Lint Makers �븘�닔!!
 //�젙由щ뒗... �굹以묒뿉 �븷寃뚯슂....
@@ -45,15 +49,18 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout background;
     Button button_heart;
     LinearLayout animation;
-
-
     NetworkModel instance;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        //use ImageLoader
+        //ImageLoader.getInstance().displayImage("URL",partnerImage, MyApplication.getDisplayImageOptions());
 
         imagePath = Environment.getDataDirectory().getAbsolutePath();
         imagePath += "/data/kr.ac.nexters.knock/files/";
@@ -70,22 +77,6 @@ public class MainActivity extends AppCompatActivity {
         animation = (LinearLayout) findViewById(R.id.animation);
 
         instance = NetworkModel.getInstance();
-
-        instance.testFunction("yoon", new NetworkModel.OnNetworkResultListener<IsSucceed>() {
-
-            @Override
-            public void onResult(IsSucceed result) {
-                Toast.makeText(MainActivity.this, result.isSuccess,
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFail(int code) {
-
-                // �꽌踰꾧� 二쎌쓣�븣
-            }
-        });
-
     }
 
 
@@ -96,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         beforeMain();
 
-        // 媛ㅻ윭由ъ뿉 �궡媛� �꽑�깮�븳 �씠誘몄�媛� �엳�뒗吏�
         File file = new File(imagePath, "mine.jpg");
         if (file.exists()) {
             Log.i("exist", "file");
