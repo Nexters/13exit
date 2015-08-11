@@ -22,9 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,9 +32,11 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.io.File;
 
 import kr.ac.nexters.knock.R;
+import kr.ac.nexters.knock.menu.BackgroundActivity;
+import kr.ac.nexters.knock.menu.ProfileActivity;
+import kr.ac.nexters.knock.menu.SettingActivity;
 import kr.ac.nexters.knock.network.IsSucceed;
 import kr.ac.nexters.knock.network.NetworkModel;
-import kr.ac.nexters.knock.tools.MyApplication;
 
 //硫붿씤 �븸�떚鍮꾪떚. 蹂�寃쏀븳 �썑 �슦 �겢由�->Android tools -> Clear Lint Makers �븘�닔!!
 //�젙由щ뒗... �굹以묒뿉 �븷寃뚯슂....
@@ -50,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
     Button button_heart;
     LinearLayout animation;
     NetworkModel instance;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

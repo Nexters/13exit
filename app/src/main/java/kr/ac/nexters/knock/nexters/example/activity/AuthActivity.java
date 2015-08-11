@@ -18,6 +18,7 @@ public class AuthActivity extends AppCompatActivity {
 	}
 
 	public void onClick(View v){
+		//
 //		String pphone = null;
 //		String UID = null;
 //		

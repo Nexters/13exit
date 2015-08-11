@@ -1,5 +1,6 @@
 package kr.ac.nexters.knock.gcm;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -85,7 +86,8 @@ public class MyGcmListenerService   extends GcmListenerService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,PendingIntent.FLAG_ONE_SHOT);
 
-        Intent in = new Intent(MyGcmListenerService.this, AcceptActivity.class);
+        //Intent in = new Intent(MyGcmListenerService.this, AcceptActivity.class);
+        Intent in = new Intent(MyGcmListenerService.this, MainActivity.class);
         in.putExtra("sender", sender); //요청을 보낸 user pid => ppid
         in.putExtra("pushid", pushid); //
 
@@ -109,7 +111,9 @@ public class MyGcmListenerService   extends GcmListenerService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,PendingIntent.FLAG_ONE_SHOT);
 
-        Intent inte = new Intent(MyGcmListenerService.this, ConnectionActivity.class);
+        //Intent inte = new Intent(MyGcmListenerService.this, ConnectionActivity.class);
+        Intent inte = new Intent(MyGcmListenerService.this, MainActivity.class);
+
         inte.putExtra("sender", sender);
         inte.putExtra("ppushid", pushid);
 
