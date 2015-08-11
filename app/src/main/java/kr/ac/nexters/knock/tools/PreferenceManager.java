@@ -5,6 +5,26 @@ import android.content.SharedPreferences;
 
 /**
  * Created by KimCP on 15. 8. 9..
+ * This class is for use sharedPreferences to easy on evenywhere.
+ * Implement singleton pattern. If you want add value.
+ * You can modify sample code.
+ *
+ * Sampe code. (You will change all key(KEY,Key,key) to value name use before)
+ * private static final String KEY = "key";
+ * private String key = "";
+ *
+ * public void setKey(String key){
+ *      this.key = key;
+ *      mEditor.putString(KEY,key);
+ *      mEditor.commit();
+ * }
+ *
+ * public void getKey(){
+ *     if(key.equals("")){
+ *         key = mPrefs.getString("KEY", "");
+ *     }
+ *     return key;
+ * }
  */
 public class PreferenceManager {
     private static final String PREF_NAME = "my_prefs.xml";

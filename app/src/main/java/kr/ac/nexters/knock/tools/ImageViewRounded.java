@@ -16,6 +16,7 @@ import android.widget.ImageView;
 /**
  * Created by KimCP on 15. 8. 9..
  * This class is for round image on layout
+ * How to use : Add imageview to layout -> <kr.ac.nexters.knock.tools.ImageViewRounded android:width .... />
  */
 public class ImageViewRounded extends ImageView {
 

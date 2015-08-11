@@ -8,12 +8,11 @@ import android.os.Message;
 
 import kr.ac.nexters.knock.R;
 
-//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
+//???¡À???
 public class SplashActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
              
@@ -23,8 +22,7 @@ public class SplashActivity extends Activity {
                 super.handleMessage(msg);
                 
              Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-             startActivity(intent);
-                finish();
+             startActivity(intent);finish();
             }
         };
         

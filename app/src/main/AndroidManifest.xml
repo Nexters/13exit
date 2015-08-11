@@ -25,7 +25,7 @@
     <application
         android:name=".tools.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
@@ -91,15 +91,15 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".nexters.example.activity.BackgroundActivity"
+            android:name=".menu.BackgroundActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".nexters.example.activity.SettingActivity"
+            android:name=".menu.SettingActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".nexters.example.activity.ProfileActivity"
+            android:name=".menu.ProfileActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -108,7 +108,7 @@
             android:screenOrientation="portrait"></activity>
 
         <receiver
-            android:name=".nexters.example.activity.TestWidget"
+            android:name=".widget.TestWidget"
             android:label="Test">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
