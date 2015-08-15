@@ -7,6 +7,7 @@
     <string name="registering_message_ready">InstanceID 토큰 가져오기</string>
     <string name="registering_message_generating">InstanceID 토큰 생성중...</string>
     <string name="registering_message_complete">완료!</string>
+    
     <string name="title_activity_input_name">InputName</string>
     <string name="title_activity_index">IndexActivity</string>
     <string name="title_activity_auth">Auth</string>
@@ -14,4 +15,11 @@
     <string name="title_activity_knock_auth">KnockAuth</string>
     <string name="title_activity_accept">AcceptActivity</string>
     <string name="title_activity_connection">ConnectionActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
+    
+    <string name="input_name_hint">이름을 입력하세요</string>
+    <string name="moveNext">다음으로 이동</string>
+    <string name="title_activity_auth_req">AuthReqActivity</string>
+    <string name="title_activity_accept_auth">AcceptAuthActivity</string>
 </resources>

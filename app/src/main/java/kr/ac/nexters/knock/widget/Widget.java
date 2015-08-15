@@ -1,7 +1,7 @@
 package kr.ac.nexters.knock.widget;
 
 import kr.ac.nexters.knock.R;
-import kr.ac.nexters.knock.network.IsSucceed;
+
 import kr.ac.nexters.knock.network.NetworkModel;
 
 import android.app.PendingIntent;
@@ -42,17 +42,7 @@ public class Widget extends AppWidgetProvider{
 			
 			String PPUSH_ID = null;
 			String phone = null;
-			
-			NetworkModel.getInstance().sendGCM(PPUSH_ID, phone, new NetworkModel.OnNetworkResultListener<IsSucceed>() {
 
-				public void onResult(IsSucceed result) {
-					// TODO Auto-generated method stub
-				}
-
-				public void onFail(int code) {
-					// TODO Auto-generated method stub
-				}
-			});
 		}
 	}
 	

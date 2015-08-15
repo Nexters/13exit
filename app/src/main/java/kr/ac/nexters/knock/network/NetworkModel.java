@@ -9,6 +9,13 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import kr.ac.nexters.knock.tools.PreferenceManager;
+
+/**
+ * Created by KimCP on 15. 8. 7..
+ * Description : NetworkModel class purpose is connect with Node.js server.
+ *               This is dependent Loopj android http async library.
+ */
 public class NetworkModel {
 	
 	private static String SERVER_URL = "http://52.69.130.243:8300/";
@@ -33,102 +40,102 @@ public class NetworkModel {
 		public void onResult(T result);
 		public void onFail(int code);
 	}
-	
-	public void addUser(String phone, String name, String UID, String PUID, String IMG, final OnNetworkResultListener<IsSucceed> listener){
-		String url = SERVER_URL + "addUser";
-		RequestParams param = new RequestParams();
-		param.put("phone", phone);
-		param.put("name", name);
-		param.put("UID", UID);
-		param.put("PUID", PUID);
-		param.put("IMG", IMG);
-		
-		client.get(url, param, new AsyncHttpResponseHandler() {
-			
+
+	public void addUser(String userName, String phone, String uid, String pushId, final OnNetworkResultListener<IsSuccess> listener){
+		RequestParams params = new RequestParams();
+		params.put("username",userName);
+		params.put("phonenum",phone);
+		params.put("uid",uid);
+		params.put("puid",pushId);
+
+		client.post(SERVER_URL+"adduser", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-				//listener.onResult(result);
+				String res = new String(responseBody);
+				Gson gson = new Gson();
+				IsSuccess result = new IsSuccess();
+				result = gson.fromJson(res,IsSuccess.class);
+				listener.onResult(result);
 			}
-			
+
 			@Override
-			public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-				// TODO Auto-generated method stub
-				
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+				listener.onFail(statusCode);
 			}
 		});
 	}
-	
-	public void auth(String pphone, String UID, final OnNetworkResultListener<IsSucceed> listener){
-		String url = SERVER_URL + "auth";
-		RequestParams param = new RequestParams();
-		param.put("pphone", pphone);
-		param.put("UID", UID);
-		
-		client.get(url, param, new AsyncHttpResponseHandler() {
-			
+
+
+	public void authSend(String pphone, final OnNetworkResultListener<IsSuccess> listener){
+		String pid = PreferenceManager.getInstance().getUid();
+		String name = PreferenceManager.getInstance().getUserName();
+		String pushid = PreferenceManager.getInstance().getPushId();
+
+		RequestParams params = new RequestParams();
+		params.put("pphone",pphone);
+		params.put("pid",pid);
+		params.put("name",name);
+		params.put("pushid",pushid);
+
+		client.post(SERVER_URL + "sendauth", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-				//listener.onResult(result);
+				String res = new String(responseBody);
+				Gson gson = new Gson();
+				IsSuccess result = new IsSuccess();
+				result = gson.fromJson(res, IsSuccess.class);
+				listener.onResult(result);
 			}
-			
+
 			@Override
-			public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-				// TODO Auto-generated method stub
-				
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+				listener.onFail(statusCode);
 			}
 		});
 	}
-	
-	
-	
-	public void sendGCM(String PPUSH_ID, String phone, final OnNetworkResultListener<IsSucceed> listener){
-		String url = SERVER_URL + "sendGCM";
-		RequestParams param = new RequestParams();
-		param.put("PPUSH_ID", PPUSH_ID);
-		param.put("phone", phone);
-		
-		client.get(url, param, new AsyncHttpResponseHandler() {
-			
+
+	//A에게 B의 정보를 보내줘야한다.
+	public void authAccept(final OnNetworkResultListener<IsSuccess> listener){
+		//sender 는 puid, pid는 나의 uid, name과 pushid 다 내꺼
+		RequestParams params = new RequestParams();
+		params.put("sender",PreferenceManager.getInstance().getPuid()); //A의 UID
+		params.put("pid", PreferenceManager.getInstance().getUid()); // B의 UID
+		params.put("pushid", PreferenceManager.getInstance().getPushId()); // B의 UID
+		params.put("name", PreferenceManager.getInstance().getUserName()); // B의 Name
+
+		client.post(SERVER_URL + "authaccept", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-				//listener.onResult(result);
+
 			}
-			
+
 			@Override
-			public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-				// TODO Auto-generated method stub
-				
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
 			}
-			
 		});
-	}	
-	
-	public void testFunction(final String test, final OnNetworkResultListener<IsSucceed> listener){
-		String url = SERVER_URL + "test";
-		RequestParams param = new RequestParams();
-		param.put("test", test);		
-		
-		client.get(url, param, new AsyncHttpResponseHandler() {
-			
+	}
+
+	public void knock(final OnNetworkResultListener<IsSuccess> listener){
+		RequestParams params = new RequestParams();
+
+		Log.i("(NM)knock to ", PreferenceManager.getInstance().getPpushId());
+
+		//params.put("pushid", PreferenceManager.getInstance().getPpushId());
+
+		String puid = PreferenceManager.getInstance().getPuid();
+		params.put("puid", puid);
+
+		client.post(SERVER_URL + "knock", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-				//listener.onResult(result);
-				
-				Gson gson=new Gson();
-				String result = new String(responseBody);
-				Log.i("test",result);
-				IsSucceed success = gson.fromJson(result, IsSucceed.class);
-				listener.onResult(success);
-				
-				
+
 			}
-			
+
 			@Override
-			public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-				// TODO Auto-generated method stub
-				
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
 			}
-			
 		});
 	}
 

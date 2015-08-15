@@ -64,20 +64,20 @@ public class PreferenceManager {
     }
 
     //user pid;
-    private static final String PID = "pid";
-    private String pid = "";
+    private static final String UID = "puid";
+    private String uid = "";
 
-    public void setPid(String pid){
-        this.pid = pid;
-        mEditor.putString(PID, pid);
+    public void setUid(String uid){
+        this.uid = uid;
+        mEditor.putString(UID, uid);
         mEditor.commit();
     }
 
-    public String getPid(){
-        if(this.pid.equals("")){
-            this.pid = mPrefs.getString(PID,"");
+    public String getUid(){
+        if(this.uid.equals("")){
+            this.uid = mPrefs.getString(UID,"");
         }
-        return pid;
+        return uid;
     }
 
     //user push id;
