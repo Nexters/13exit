@@ -23,7 +23,7 @@ import android.widget.Button;
 
 import kr.ac.nexters.knock.R;
 
-//�����ʻ��� �����ϴ� ��Ƽ��Ƽ. ������ �� �� Ŭ��->Android tools -> Clear Lint Makers �ʼ�!!
+
 public class ProfileActivity extends AppCompatActivity {
 
 	Button btn;
@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
 		btn = (Button) findViewById(R.id.button1);
 		
 		imagePath = Environment.getDataDirectory().getAbsolutePath();
-		imagePath += "/data/nexters.example.testknock00/files/";
+		imagePath += "/data/kr.ac.nexters.knock/files/";
 	}
 	
 	public void onClick(View v){

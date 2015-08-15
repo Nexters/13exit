@@ -39,10 +39,10 @@ public class AuthActivity extends AppCompatActivity {
 
 	//????? ??????????? ?????????? boolean?? ??????? ?????? ????
 	public void PlogIn(){
-		SharedPreferences pref = getSharedPreferences("auth", Activity.MODE_PRIVATE);
-		SharedPreferences.Editor editor = pref.edit();
-		editor.putBoolean("havePartner", true);
-		editor.commit();
+//		SharedPreferences pref = getSharedPreferences("auth", Activity.MODE_PRIVATE);
+//		SharedPreferences.Editor editor = pref.edit();
+//		editor.putBoolean("havePartner", true);
+//		editor.commit();
 		finish();
 	}
 
