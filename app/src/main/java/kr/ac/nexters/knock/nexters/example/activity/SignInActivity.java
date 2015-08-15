@@ -37,15 +37,14 @@ public class SignInActivity extends AppCompatActivity {
 //				
 //			}
 //		});
-		logIn(); //�� �κ��� �����κ� ������ �� ���� ����
+		logIn();
 	}
-	
-	//�ԷµǾ����� boolean�� �����ϰ� ��Ƽ��Ƽ ����
+
 	public void logIn(){
-		SharedPreferences pref = getSharedPreferences("login", Activity.MODE_PRIVATE);
-		SharedPreferences.Editor editor = pref.edit();
-		editor.putBoolean("autoLogin", true);
-		editor.commit();
+//		SharedPreferences pref = getSharedPreferences("login", Activity.MODE_PRIVATE);
+//		SharedPreferences.Editor editor = pref.edit();
+//		editor.putBoolean("autoLogin", true);
+//		editor.commit();
 		finish();
 	}
 

@@ -15,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.DragEvent;
@@ -37,9 +38,9 @@ import kr.ac.nexters.knock.menu.ProfileActivity;
 import kr.ac.nexters.knock.menu.SettingActivity;
 import kr.ac.nexters.knock.network.IsSucceed;
 import kr.ac.nexters.knock.network.NetworkModel;
+import kr.ac.nexters.knock.tools.PreferenceManager;
+import kr.ac.nexters.knock.tools.RippleBackground;
 
-//硫붿씤 �븸�떚鍮꾪떚. 蹂�寃쏀븳 �썑 �슦 �겢由�->Android tools -> Clear Lint Makers �븘�닔!!
-//�젙由щ뒗... �굹以묒뿉 �븷寃뚯슂....
 public class MainActivity extends AppCompatActivity {
 
     ImageView myImage, partnerImage;
@@ -66,14 +67,36 @@ public class MainActivity extends AppCompatActivity {
         partnerImage = (ImageView) findViewById(R.id.partnerImg);
         background = (LinearLayout) findViewById(R.id.LinearLayout1);
         button_heart = (Button) findViewById(R.id.button_heart);
+
+        /*
         button_heart.setOnTouchListener(touchListener);
         button_heart.setClickable(true);
         button_heart.setOnDragListener(mDragListener);
+        */
 
-        //layout wave animation test
-        animation = (LinearLayout) findViewById(R.id.animation);
+//        //layout wave animation test
+//        animation = (LinearLayout) findViewById(R.id.animation);
 
         instance = NetworkModel.getInstance();
+
+        final RippleBackground rippleBackground=(RippleBackground)findViewById(R.id.partnerRoom);
+        final Handler handler=new Handler();
+        button_heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(MainActivity.this, "push", Toast.LENGTH_SHORT).show();
+
+                // rippleBackground.startRippleAnimation();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        rippleBackground.startRippleAnimation();
+                    }
+                }, 0);
+            }
+        });
+
     }
 
 
@@ -84,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         beforeMain();
 
+        /*
         File file = new File(imagePath, "mine.jpg");
         if (file.exists()) {
             Log.i("exist", "file");
@@ -97,16 +121,16 @@ public class MainActivity extends AppCompatActivity {
             Bitmap bmp = BitmapFactory.decodeFile(imagePath + "backGround.jpg");
             Drawable draw = new BitmapDrawable(getResources(), bmp);
             background.setBackground(draw);
-        }
+        }*/
     }
 
-    @Override
-    protected void onRestart() {
-        // TODO Auto-generated method stub
-        super.onRestart();
-        Bundle fakeBundle = null;
-        onCreate(fakeBundle);
-    }
+//    @Override
+//    protected void onRestart() {
+//        // TODO Auto-generated method stub
+//        super.onRestart();
+//        Bundle fakeBundle = null;
+//        onCreate(fakeBundle);
+//    }
 
     @Override
     protected void onResume() {
@@ -120,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    // 硫붿씤�븸�떚鍮꾪떚 �쟾�뿉 �씤利�, 濡쒓렇�씤 �뿬遺� �뙋蹂�
     protected void beforeMain() {
+        /*
         SharedPreferences pref = getSharedPreferences("auth",
                 Activity.MODE_PRIVATE);
         if (!pref.getBoolean("havePartner", false)) {
@@ -132,18 +156,18 @@ public class MainActivity extends AppCompatActivity {
         pref = getSharedPreferences("login", Activity.MODE_PRIVATE);
         if (!pref.getBoolean("autoLogin", false)) {
             startActivity(new Intent(this, SignInActivity.class));
+        }*/
+
+        if(PreferenceManager.getInstance().getFirst().equals("")){
+
+            startActivity(new Intent(this, AuthActivity.class));
+            startActivity(new Intent(this, SignInActivity.class));
+            PreferenceManager.getInstance().setFirst("registered");
         }
-
-        // �뼐�뒗 �븘吏� �뿰寃고븯誘� �븞�맖�땲�떦
-        // Tutorial
-        // if ( !(pref.getBoolean("autoLogin", false) &&
-        // pref.getBoolean("havePartner", false))){
-        // startActivity(new Intent(this, WalkThroughActivity.class));
-        // }
-
     }
 
 
+    /*
     View.OnTouchListener touchListener = new View.OnTouchListener() {
 
         @Override
@@ -177,9 +201,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+*/
 
-
-    // �닃���쓣 �븣.
     public void pushHeart(View v) {
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show();
 
@@ -200,7 +223,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // �룞洹몃옑寃�
     public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
         int targetWidth = scaleBitmapImage.getWidth();
         int targetHeight = scaleBitmapImage.getHeight();

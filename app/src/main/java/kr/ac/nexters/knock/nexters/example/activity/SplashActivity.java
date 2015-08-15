@@ -8,7 +8,6 @@ import android.os.Message;
 
 import kr.ac.nexters.knock.R;
 
-//???¡À???
 public class SplashActivity extends Activity {
 
 	@Override
@@ -22,7 +21,8 @@ public class SplashActivity extends Activity {
                 super.handleMessage(msg);
                 
              Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-             startActivity(intent);finish();
+             startActivity(intent);
+             finish();
             }
         };
         

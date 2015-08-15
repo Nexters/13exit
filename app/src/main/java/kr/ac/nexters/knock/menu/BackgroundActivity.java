@@ -24,7 +24,6 @@ import android.widget.Button;
 
 import kr.ac.nexters.knock.R;
 
-//���ȭ�� �����ϴ� ��Ƽ��Ƽ. ������ �� �� Ŭ��->Android tools -> Clear Lint Makers �ʼ�!!
 public class BackgroundActivity extends AppCompatActivity {
 
 	Button btn;

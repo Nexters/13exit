@@ -12,9 +12,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-
-//����. �̿ϼ�.
-public class TestWidget extends AppWidgetProvider{
+public class Widget extends AppWidgetProvider{
 	
 	final static String ACTION_DISPLAY_FULLTIME = "NalYoil.DisplayFullTime";	
 	
@@ -24,7 +22,7 @@ public class TestWidget extends AppWidgetProvider{
 			RemoteViews remote = new RemoteViews(context.getPackageName(), 
 					R.layout.testlayout);
 		
-			Intent intent = new Intent(context, TestWidget.class);
+			Intent intent = new Intent(context, Widget.class);
 			intent.setAction(ACTION_DISPLAY_FULLTIME);
 			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0); 
@@ -38,6 +36,8 @@ public class TestWidget extends AppWidgetProvider{
 		super.onReceive(context, intent);
 		String action = intent.getAction();
 		if (action!=null && action.equals(ACTION_DISPLAY_FULLTIME)){
+
+			//여기부터 위젯 클릭시 동작.
 			Toast.makeText(context, "Push", Toast.LENGTH_SHORT).show();
 			
 			String PPUSH_ID = null;
