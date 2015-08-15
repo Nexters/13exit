@@ -48,8 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            android:layout_centerInParent="true"
-            android:onClick="pushHeart"/>
+            android:layout_centerInParent="true"/>
 
     </kr.ac.nexters.knock.tools.RippleBackground>
 
