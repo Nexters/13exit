@@ -148,4 +148,47 @@ public class PreferenceManager {
         }
         return puid;
     }
+
+
+    //push
+    private static final String PUSH_USE = "push_use";
+    private boolean push_use = true;
+
+    public void setPushUse(boolean push_use){
+        this.push_use = push_use;
+        mEditor.putBoolean(PUSH_USE, push_use);
+        mEditor.commit();
+    }
+
+    public boolean getPushUse(){
+        if(this.push_use){
+            this.push_use = mPrefs.getBoolean(PUSH_USE, true);
+        }
+        return  push_use;
+    }
+
+
+
+
+
+    //vib with push
+    private static final String WITH_VIB = "with_vib";
+    private boolean with_vib = true;
+
+    public void setWithVib(boolean with_vib){
+        this.with_vib = with_vib;
+        mEditor.putBoolean(WITH_VIB, with_vib);
+        mEditor.commit();
+    }
+
+    public boolean getWithVib(){
+        if(this.with_vib){
+            this.with_vib = mPrefs.getBoolean(WITH_VIB, true);
+        }
+        return  with_vib;
+    }
+
+
+
+
 }

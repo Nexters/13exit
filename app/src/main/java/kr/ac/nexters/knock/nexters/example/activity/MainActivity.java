@@ -1,36 +1,21 @@
 package kr.ac.nexters.knock.nexters.example.activity;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-
-import java.io.File;
 
 import kr.ac.nexters.knock.R;
 import kr.ac.nexters.knock.menu.BackgroundActivity;
@@ -39,17 +24,16 @@ import kr.ac.nexters.knock.menu.SettingActivity;
 
 import kr.ac.nexters.knock.network.IsSuccess;
 import kr.ac.nexters.knock.network.NetworkModel;
+import kr.ac.nexters.knock.tools.MyApplication;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 import kr.ac.nexters.knock.tools.RippleBackground;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView myImage, partnerImage;
-    String picturePath;
     String imagePath;
     LinearLayout background;
-    Button button_heart;
-    LinearLayout animation;
+    ImageButton button_heart;
     NetworkModel instance;
 
     @Override
@@ -63,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         imagePath = Environment.getDataDirectory().getAbsolutePath() + "/data/kr.ac.nexters.knock/files/";
 
-        myImage = (ImageView) findViewById(R.id.myImg);
-        partnerImage = (ImageView) findViewById(R.id.partnerImg);
-        background = (LinearLayout) findViewById(R.id.LinearLayout1);
-        button_heart = (Button) findViewById(R.id.button_heart);
+        myImage = (ImageView) findViewById(R.id.main_myImg);
+        partnerImage = (ImageView) findViewById(R.id.main_partnerImg);
+        background = (LinearLayout) findViewById(R.id.main_background);
+        button_heart = (ImageButton) findViewById(R.id.main_btn_heart);
 
         instance = NetworkModel.getInstance();
 
@@ -82,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 //        animation = (LinearLayout) findViewById(R.id.animation);
 
 
-        final RippleBackground rippleBackground=(RippleBackground)findViewById(R.id.partnerRoom);
+        final RippleBackground rippleBackground=(RippleBackground)findViewById(R.id.main_partnerRoom);
         final Handler handler=new Handler();
         button_heart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+       ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImage, MyApplication.getDisplayImageOptions());
+//       ImageLoader.getInstance().displayImage("URL", partnerImage, MyApplication.getDisplayImageOptions());
     }
 
     // Menu
