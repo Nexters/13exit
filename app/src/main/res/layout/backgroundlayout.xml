@@ -3,16 +3,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/option_screen_background_etc"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/profile_title"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:id="@+id/title_backbtn">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="13dp"
+                android:background="@mipmap/btn_back" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="0dp"
+        android:src="@mipmap/bg_title_lineup_plus80px" />
 
 
     <GridView
+        android:id="@+id/bg_grid_imageSelect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bg_grid_imageSelect"
-        android:verticalSpacing="1dp"
-        android:horizontalSpacing="1dp"
         android:columnWidth="119dp"
-        android:numColumns="3"/>
+        android:horizontalSpacing="1dp"
+        android:numColumns="3"
+        android:verticalSpacing="1dp" />
 
 </LinearLayout>

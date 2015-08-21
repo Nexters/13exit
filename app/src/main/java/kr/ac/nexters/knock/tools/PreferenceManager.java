@@ -189,22 +189,40 @@ public class PreferenceManager {
     }
 
 
+    //myImg
+    private static final String MYIMG = "myImg";
+    private String myImg = "";
 
-    //tutorial check
-    private static final String TUTORIAL = "tutorial";
-    private String tutorial = "";
-
-    public void setTutorial(String tutorial){
-        this.tutorial = tutorial;
-        mEditor.putString(TUTORIAL, tutorial);
+    public void setMyImg(String myImg){
+        this.myImg = myImg;
+        mEditor.putString(MYIMG, myImg);
         mEditor.commit();
     }
 
-    public String getTutorial(){
-        if(this.tutorial.equals("")){
-            tutorial = mPrefs.getString(TUTORIAL, "");
+    public String getMyImg(){
+        if(myImg.equals("")){
+            myImg = mPrefs.getString(MYIMG, "");
         }
-        return tutorial;
+        return myImg;
     }
+
+
+    //background img
+    private static final String BGIMG = "bgImg";
+    private String bgImg = "";
+
+    public void setBgImg(String bgImg){
+        this.bgImg = bgImg;
+        mEditor.putString(BGIMG, bgImg);
+        mEditor.commit();
+    }
+
+    public String getBgImg(){
+        if(bgImg.equals("")){
+            bgImg = mPrefs.getString(BGIMG, "");
+        }
+        return bgImg;
+    }
+
 
 }

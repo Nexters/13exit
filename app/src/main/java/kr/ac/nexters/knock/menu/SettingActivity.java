@@ -3,6 +3,7 @@ package kr.ac.nexters.knock.menu;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,6 +44,15 @@ public class SettingActivity extends AppCompatActivity {
 
 		TextView linkedAccount = (TextView)findViewById(R.id.setting_tv_linkedAccount);
 		linkedAccount.setText("linked_account");
+
+		LinearLayout btn_back = (LinearLayout) findViewById(R.id.title_backbtn);
+		btn_back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+
 
 	}
 

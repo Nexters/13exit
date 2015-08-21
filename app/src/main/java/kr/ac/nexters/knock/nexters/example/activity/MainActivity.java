@@ -30,9 +30,8 @@ import kr.ac.nexters.knock.tools.RippleBackground;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView myImage, partnerImage;
+    ImageView myImage, partnerImage, background;
     String imagePath;
-    LinearLayout background;
     ImageButton button_heart;
     NetworkModel instance;
 
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         myImage = (ImageView) findViewById(R.id.main_myImg);
         partnerImage = (ImageView) findViewById(R.id.main_partnerImg);
-        background = (LinearLayout) findViewById(R.id.main_background);
+        background = (ImageView) findViewById(R.id.main_background);
         button_heart = (ImageButton) findViewById(R.id.main_btn_heart);
 
         instance = NetworkModel.getInstance();
@@ -99,14 +98,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
 
+        if(PreferenceManager.getInstance().getMyImg().isEmpty()) {
 
-       ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImage, MyApplication.getDisplayImageOptions());
+        } else if (PreferenceManager.getInstance().getMyImg().length() < 15){
+           //length말고 다른 방법.
+            myImage.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getMyImg()));
+        }
+        else
+            ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImage, MyApplication.getDisplayImageOptions());
 //       ImageLoader.getInstance().displayImage("URL", partnerImage, MyApplication.getDisplayImageOptions());
+
+
+
+        if(PreferenceManager.getInstance().getBgImg().isEmpty()) {
+
+        } else if (PreferenceManager.getInstance().getBgImg().length() < 15){
+            //length말고 다른 방법.
+            background.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getBgImg()));
+        }
+        else
+            ImageLoader.getInstance().displayImage("file:///storage/emulated/0//background.jpg", background, MyApplication.getDisplayImageOptions());
+
+
+
     }
+
 
     // Menu
     public boolean onCreateOptionsMenu(Menu menu) {
