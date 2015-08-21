@@ -41,27 +41,8 @@ public class TutorialActivity extends AppCompatActivity {
         findViewById(R.id.tut_06).setOnClickListener(mClickListener);
 
         mViewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
-//shared part
-// ********if you get some error, Plz delete this**************** (1/2)
-        Handler handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
 
-                //first enter
-                /***********************TO JIYOUNG************/
-                if(PreferenceManager.getInstance().getTutorial().equals("tutorial")){
-                    Intent intent = new Intent(TutorialActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-
-            }
-        };
-
-        handler.sendEmptyMessageDelayed(0, 3000);
     }
-////**********************delete this************(1/2)
 
     //skip btn
     private final View.OnClickListener mClickListener = new View.OnClickListener() {
@@ -124,9 +105,6 @@ public class TutorialActivity extends AppCompatActivity {
                 else if (mOldTouchX > currentX)
                     goToNextPage();
                 if(check==5){
-                    //*****if you get some error, Plz delete this******(2/2)
-                    PreferenceManager.getInstance().setTutorial("tutorial");
-                    //*****if you get some error, Plz delete this******(2/2)
                     Intent i = new Intent(TutorialActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
@@ -152,5 +130,11 @@ public class TutorialActivity extends AppCompatActivity {
 
     private boolean isDragging(float oldX, float currentX) {
         return Math.abs(oldX - currentX) > DRAG_THRESHOLD;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        PreferenceManager.getInstance().setFirst("regok");
     }
 }

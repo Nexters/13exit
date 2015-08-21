@@ -5,10 +5,46 @@
     android:background="@mipmap/setting_background"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/profile_title"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:background="#FDFDFD"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:id="@+id/title_backbtn">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="13dp"
+                android:background="@mipmap/btn_back" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@mipmap/setting_infromation_alarm_account_area"
         android:orientation="vertical">
 
@@ -31,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="45dp"
                 android:layout_marginTop="21dp"
-                android:textColor="#FF8964"/>
+                android:textColor="#FF8964" />
 
 
         </LinearLayout>
@@ -56,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
                 android:layout_marginTop="16dp"
-                android:textColor="#FF8964"/>
+                android:textColor="#FF8964" />
 
         </LinearLayout>
 
@@ -71,11 +107,11 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/setting_layout_push"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:id="@+id/setting_layout_push">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -100,23 +136,23 @@
                 android:gravity="right">
 
                 <ImageView
+                    android:id="@+id/setting_btn_push"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="22dp"
                     android:layout_marginTop="21dp"
-                    android:src="@mipmap/btn_check"
-                    android:id="@+id/setting_btn_push"/>
+                    android:src="@mipmap/btn_check" />
 
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/setting_layout_vib"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:id="@+id/setting_layout_vib">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -141,12 +177,12 @@
                 android:gravity="right">
 
                 <ImageView
+                    android:id="@+id/setting_btn_vib"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="22dp"
                     android:layout_marginTop="20dp"
-                    android:src="@mipmap/btn_check"
-                    android:id="@+id/setting_btn_vib"/>
+                    android:src="@mipmap/btn_check" />
 
             </LinearLayout>
 
@@ -162,11 +198,11 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/setting_layout_appInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:id="@+id/setting_layout_appInfo">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -202,11 +238,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/setting_layout_devInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:id="@+id/setting_layout_devInfo">
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -245,12 +281,12 @@
 
 
     <LinearLayout
+        android:id="@+id/setting_layout_delAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:background="@mipmap/setting_account_del_area"
-        android:gravity="center"
-        android:id="@+id/setting_layout_delAccount">
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/setting_btn_delAccount"

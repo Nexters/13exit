@@ -31,9 +31,14 @@ public class SplashActivity extends Activity {
                     Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
                     startActivity(intent);
                 }
+                //remain user (doesn't reg)
+                else if(PreferenceManager.getInstance().getFirst().equals("needTutorial")){
+                    Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
+                    startActivity(intent);
+                }
                 //remain user
                 else if(PreferenceManager.getInstance().getFirst().equals("regok")) {
-                    Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
                 finish();

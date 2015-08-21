@@ -19,25 +19,40 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import kr.ac.nexters.knock.R;
+import kr.ac.nexters.knock.tools.GridImageAdapter;
+import kr.ac.nexters.knock.tools.GridItem;
+import kr.ac.nexters.knock.tools.ImageViewRounded;
+import kr.ac.nexters.knock.tools.MyApplication;
+import kr.ac.nexters.knock.tools.PreferenceManager;
 
 
 public class ProfileActivity extends AppCompatActivity {
 
 	File mSavedFile;
 	public static final int REQUEST_CODE_CROP = 0;
+	ImageViewRounded myImg;
+	ArrayList<GridItem> imageList = new ArrayList<>();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profilelayout);
+		putDataInList();
 
 		//hide actionbar
 		getSupportActionBar().hide();
+
+
+		myImg = (ImageViewRounded)findViewById(R.id.profile_iv_preview);
 
 		//현재 preference에 유저이름 저장 안되어있음.
 		TextView myName = (TextView)findViewById(R.id.profile_tv_myName);
@@ -47,16 +62,16 @@ public class ProfileActivity extends AppCompatActivity {
 		myPhone.setText("핸드폰번호");
 
 		ImageButton nameModi = (ImageButton) findViewById(R.id.profile_btn_modify);
-		ImageButton btn_back = (ImageButton)findViewById(R.id.title_backbtn);
+		LinearLayout btn_back = (LinearLayout) findViewById(R.id.title_backbtn);
 
-		nameModi.setOnClickListener(new ImageButton.OnClickListener(){
+		nameModi.setOnClickListener(new ImageButton.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(ProfileActivity.this, "수정요청", Toast.LENGTH_SHORT).show();
 			}
 		});
 
-		btn_back.setOnClickListener(new ImageButton.OnClickListener(){
+		btn_back.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
@@ -64,79 +79,64 @@ public class ProfileActivity extends AppCompatActivity {
 		});
 
 
-
-		GridView grid_bgselect = (GridView) findViewById(R.id.profile_grid_imageSelect);
-		ImageAdapter adapter = new ImageAdapter(this);
-		grid_bgselect.setAdapter(adapter);
-
-		grid_bgselect.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				if (position == 0) {
-					Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-					photoPickerIntent.setType("image/*");
-					photoPickerIntent.putExtra("crop", "true");
-					photoPickerIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
-					photoPickerIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-					startActivityForResult(photoPickerIntent, REQUEST_CODE_CROP);
-				} else
-					Toast.makeText(ProfileActivity.this, position + "번째 선택", Toast.LENGTH_SHORT).show();
-			}
-		});
+		GridView grid_profileSelect = (GridView) findViewById(R.id.profile_grid_imageSelect);
+		GridImageAdapter adapter = new GridImageAdapter(this, imageList, R.layout.item_profilegrid);
+		grid_profileSelect.setAdapter(adapter);
+		grid_profileSelect.setOnItemClickListener(itemClickListener);
 	}
 
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if(PreferenceManager.getInstance().getMyImg().isEmpty()){
 
-	class ImageAdapter extends BaseAdapter {
-
-		private Context context;
-		ArrayList<Integer> imageList = new ArrayList<Integer>();
-
-		public ImageAdapter(Context context) {
-			this.context = context;
-
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
-			imageList.add(R.mipmap.bg_unselect_character);
 		}
-
-
-		@Override
-		public int getCount() {
-			return imageList.size();
+		else if(PreferenceManager.getInstance().getMyImg().length() < 16){
+			//length말고 다른 방법 찾기.
+			myImg.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getMyImg()));
 		}
-
-		@Override
-		public Object getItem(int position) {
-			return imageList.get(position);
-		}
-
-		@Override
-		public long getItemId(int position) {
-			return position;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			ImageView imageView;
-
-			if (convertView == null) {
-				imageView = new ImageView(context);
-			} else {
-				imageView = (ImageView) convertView;
-			}
-
-			imageView.setImageResource(imageList.get(position));
-
-			return imageView;
-		}
+		else
+			ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImg, MyApplication.getDisplayImageOptions());
 	}
+
+	private void putDataInList(){
+		imageList.add(new GridItem(R.mipmap.btn_backgroundpicture_plus, -1));
+		imageList.add(new GridItem(R.mipmap.btn_backgroundpicture_plus, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+	}
+
+	AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener(){
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			if (position == 0) {
+
+				//이렇게 하면 안될둡....
+				ImageLoader.getInstance().clearMemoryCache();
+				ImageLoader.getInstance().clearDiskCache();
+
+				Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+				photoPickerIntent.setType("image/*");
+				photoPickerIntent.putExtra("crop", "true");
+				photoPickerIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
+				photoPickerIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+				startActivityForResult(photoPickerIntent, REQUEST_CODE_CROP);
+			} else{
+				myImg.setImageResource(imageList.get(position).getMainItemID());
+				PreferenceManager.getInstance().setMyImg(String.valueOf(imageList.get(position).getMainItemID()));
+			}
+		}
+	};
+
+
+
+
 
 	private Uri getTempUri() {
 		mSavedFile = new File(Environment.getExternalStorageDirectory(),"mine.jpg");
@@ -148,6 +148,8 @@ public class ProfileActivity extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == REQUEST_CODE_CROP && resultCode == Activity.RESULT_OK) {
+			ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImg, MyApplication.getDisplayImageOptions());
+			PreferenceManager.getInstance().setMyImg(getTempUri().toString());
 		}
 	}
 

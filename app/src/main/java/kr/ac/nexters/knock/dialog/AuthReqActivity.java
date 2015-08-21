@@ -41,7 +41,7 @@ public class AuthReqActivity extends Activity {
                 startActivity(in);
                 finish();
 
-                PreferenceManager.getInstance().setFirst("regok");
+                PreferenceManager.getInstance().setFirst("needTutorial");
 
                 NetworkModel.getInstance().authAccept(new NetworkModel.OnNetworkResultListener<IsSuccess>() {
                     @Override
