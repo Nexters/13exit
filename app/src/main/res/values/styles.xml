@@ -6,7 +6,6 @@
         &lt;!&ndash; Customize your theme here. &ndash;&gt;
     </style>
 -->
-
     <!-- Application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -23,6 +22,8 @@
         <!-- Support library compatibility -->
         <item name="background">@android:color/transparent</item>
         <item name="windowActionBarOverlay">true</item>
-    </style>
 
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>

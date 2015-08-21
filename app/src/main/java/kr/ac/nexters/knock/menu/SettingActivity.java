@@ -19,6 +19,9 @@ public class SettingActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.settinglayout);
 
+		//hide actionbar
+		getSupportActionBar().hide();
+
 		LinearLayout setPush = (LinearLayout)findViewById(R.id.setting_layout_push);
 		LinearLayout withVib = (LinearLayout)findViewById(R.id.setting_layout_vib);
 		LinearLayout appInfo = (LinearLayout)findViewById(R.id.setting_layout_appInfo);
