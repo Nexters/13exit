@@ -36,6 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profilelayout);
 
+		//hide actionbar
+		getSupportActionBar().hide();
+
 		//현재 preference에 유저이름 저장 안되어있음.
 		TextView myName = (TextView)findViewById(R.id.profile_tv_myName);
 //		myName.setText(PreferenceManager.getInstance().getUserName());

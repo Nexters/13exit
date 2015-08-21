@@ -38,6 +38,9 @@ public class BackgroundActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.backgroundlayout);
 
+		//hide actionbar
+		getSupportActionBar().hide();
+
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
 		ImageLoader.getInstance().init(config);
 

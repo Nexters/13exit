@@ -33,7 +33,7 @@ public class SplashActivity extends Activity {
                 }
                 //remain user
                 else if(PreferenceManager.getInstance().getFirst().equals("regok")) {
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
                     startActivity(intent);
                 }
                 finish();

@@ -190,5 +190,21 @@ public class PreferenceManager {
 
 
 
+    //tutorial check
+    private static final String TUTORIAL = "tutorial";
+    private String tutorial = "";
+
+    public void setTutorial(String tutorial){
+        this.tutorial = tutorial;
+        mEditor.putString(TUTORIAL, tutorial);
+        mEditor.commit();
+    }
+
+    public String getTutorial(){
+        if(this.tutorial.equals("")){
+            tutorial = mPrefs.getString(TUTORIAL, "");
+        }
+        return tutorial;
+    }
 
 }
