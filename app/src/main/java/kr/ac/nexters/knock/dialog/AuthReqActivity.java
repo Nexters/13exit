@@ -1,6 +1,7 @@
 package kr.ac.nexters.knock.dialog;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
@@ -12,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.android.gms.auth.api.Auth;
 
 import kr.ac.nexters.knock.R;
 import kr.ac.nexters.knock.network.IsSuccess;
@@ -37,16 +40,17 @@ public class AuthReqActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent in = new Intent(AuthReqActivity.this, TutorialActivity.class);
-                startActivity(in);
-                finish();
 
-                PreferenceManager.getInstance().setFirst("regok");
 
                 NetworkModel.getInstance().authAccept(new NetworkModel.OnNetworkResultListener<IsSuccess>() {
                     @Override
                     public void onResult(IsSuccess result) {
 
+                        PreferenceManager.getInstance().setFirst("regok");
+                        Intent in = new Intent(AuthReqActivity.this, TutorialActivity.class);
+                        startActivity(in);
+                        AuthActivity.getActivity().finish();
+                        finish();
                     }
 
                     @Override

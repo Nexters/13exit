@@ -14,12 +14,16 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/auth_et_partner_number" />
+        android:inputType="number"
+        android:ems="11"
+        android:id="@+id/auth_et_partner_number"
+        android:hint="번호만 입력하세요" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="인증요청"
-        android:id="@+id/auth_btn_nextActivity" />
+        android:id="@+id/auth_btn_nextActivity"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

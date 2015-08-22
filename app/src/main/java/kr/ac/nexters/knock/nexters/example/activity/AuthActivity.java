@@ -1,6 +1,7 @@
 package kr.ac.nexters.knock.nexters.example.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -22,13 +23,21 @@ public class AuthActivity extends ActionBarActivity {
 
     private Button btn_nextMove;
     private EditText et_inputPartnerNum;
+    private static Activity authActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        authActivity = this;
+
         setLayout();
+    }
+
+    public static Activity getActivity(){
+        return authActivity;
     }
 
     public void setLayout(){
