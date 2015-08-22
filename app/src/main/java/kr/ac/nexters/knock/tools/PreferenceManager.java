@@ -241,4 +241,24 @@ public class PreferenceManager {
     }
 
 
+    //pname
+    //background img
+    private static final String PNAME = "pname";
+    private String pname = "";
+
+    public void setPname(String pname){
+        this.pname = pname;
+        mEditor.putString(PNAME, pname);
+        mEditor.commit();
+    }
+
+    public String getPname(){
+        if(pname.equals("")){
+            pname = mPrefs.getString(PNAME, "");
+        }
+        return pname;
+    }
+
+
+
 }
