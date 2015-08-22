@@ -111,11 +111,13 @@
 
         <activity
             android:name=".nexters.example.activity.SignUpActivity"
-            android:label="@string/title_activity_sign_up" >
+            android:label="@string/title_activity_sign_up"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".nexters.example.activity.AuthActivity"
-            android:label="@string/title_activity_auth" >
+            android:label="@string/title_activity_auth"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".nexters.example.activity.TutorialActivity"

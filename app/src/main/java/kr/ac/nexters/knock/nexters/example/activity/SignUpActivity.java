@@ -8,6 +8,7 @@ import android.nfc.Tag;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
@@ -32,7 +33,7 @@ import kr.ac.nexters.knock.network.IsSuccess;
 import kr.ac.nexters.knock.network.NetworkModel;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
-public class SignUpActivity extends ActionBarActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "SignUpActivity";
@@ -47,6 +48,9 @@ public class SignUpActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        //hide actionbar
+        getSupportActionBar().hide();
 
         mContext = getApplicationContext();
         registBroadcastReceiver();
@@ -63,6 +67,7 @@ public class SignUpActivity extends ActionBarActivity {
             public void onClick(View v) {
                 if(!PreferenceManager.getInstance().getPushId().equals("")) {
                     addUser(et_inputName.getText().toString());
+                    PreferenceManager.getInstance().setUserName(et_inputName.getText().toString());
                 }else {
                     Toast.makeText(mContext, "토큰이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -103,6 +108,7 @@ public class SignUpActivity extends ActionBarActivity {
         String phoneNum = tm.getLine1Number();
         phoneNum = phoneNum.substring(phoneNum.length()-8, phoneNum.length());
         Log.i("phone", phoneNum);
+        PreferenceManager.getInstance().setPhonenum(phoneNum);
 
         //get device Id (it's mean UID);
         final String tmDevice, tmSerial, androidId;

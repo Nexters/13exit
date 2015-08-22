@@ -28,6 +28,9 @@ public class AuthActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        //hide actionbar
+        getSupportActionBar().hide();
+
         setLayout();
     }
 

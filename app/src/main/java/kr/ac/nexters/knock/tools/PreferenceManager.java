@@ -149,6 +149,22 @@ public class PreferenceManager {
         return puid;
     }
 
+    //my phone number
+    private static final String PHONENUM = "phonenum";
+    private String phonenum = "";
+
+    public void setPhonenum(String phonenum){
+        this.phonenum = phonenum;
+        mEditor.putString(PHONENUM, phonenum);
+        mEditor.commit();
+    }
+
+    public String getPhonenum(){
+        if(this.phonenum.equals("")){
+            this.phonenum = mPrefs.getString(PHONENUM, "");
+        }
+        return phonenum;
+    }
 
     //push
     private static final String PUSH_USE = "push_use";
