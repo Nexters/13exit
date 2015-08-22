@@ -55,7 +55,7 @@ public class MyGcmListenerService   extends GcmListenerService {
         // GCM으로 받은 메세지를 디바이스에 알려주는 sendNotification()을 호출한다.
         if(type.equals("auth")){
             //인증요청을 받았다 -> 타이틀, 메시지, 요청을 보낸사람 UID, 이름,pushid
-            authNotification(title, message, sender,pushid);
+            authNotification(title, message, sender,pushid,name);
             Log.i("Noti", "auth");
         }else if(type.equals("accept")) {
             //인증승인을 받았다 -> 타이틀, 메세지, 요청을 수락한사람의 uid와 pushid
@@ -76,6 +76,7 @@ public class MyGcmListenerService   extends GcmListenerService {
      */
     private void sendNotification(String title, String message) {
         Intent intent = new Intent(MyGcmListenerService.this, MainActivity.class);
+        //intent에 data담아서 넘겨줌 -> 애니메이션 동작
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -97,12 +98,14 @@ public class MyGcmListenerService   extends GcmListenerService {
     }
 
     //A가 요청을 보내면 B에게 이게 뜸 그럼 sender는 puid pushid는 ppushid
-    private void authNotification(String title, String message, final String sender, final String pushid){
+    private void authNotification(String title, String message, final String sender, final String pushid, String name){
         Log.i("auth ppushid", pushid);
         PreferenceManager.getInstance().setPuid(sender);
         PreferenceManager.getInstance().setPpushId(pushid);
 
+
         Intent in = new Intent(MyGcmListenerService.this, AuthReqActivity.class);
+        in.putExtra("pname",name);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, in,PendingIntent.FLAG_ONE_SHOT);
 
         try{

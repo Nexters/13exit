@@ -26,16 +26,20 @@ import kr.ac.nexters.knock.tools.PreferenceManager;
 public class AuthReqActivity extends Activity {
 
     private Button btn_cancel;
-
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth_req);
 
+        intent = this.getIntent();
+
         btn_cancel = (Button)findViewById(R.id.btn_cancel);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                PreferenceManager.getInstance().setPname(intent.getStringExtra("pname"));
 
                 Intent in = new Intent(AuthReqActivity.this, TutorialActivity.class);
                 startActivity(in);
