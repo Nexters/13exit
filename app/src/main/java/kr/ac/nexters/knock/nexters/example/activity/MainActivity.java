@@ -42,22 +42,11 @@ public class MainActivity extends AppCompatActivity {
     String imagePath;
     ImageButton button_heart;
     NetworkModel instance;
-    Object actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        actionBar = getSupportActionBar();
-//        android.support.v7.internal.app.WindowDecorActionBar bar = (android.support.v7.internal.app.WindowDecorActionBar) actionBar;
-//        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33000000")));
-//        bar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
-
-//        ActionBar actionBar = getActionBar();
-//
-//        ColorDrawable newColor = new ColorDrawable();//your color from res
-//        newColor.setAlpha(128);//from 0(0%) to 256(100%)
-//        getActionBar().setBackgroundDrawable(newColor);
 
         //use ImageLoader
         //ImageLoader.getInstance().displayImage("URL",partnerImage, MyApplication.getDisplayImageOptions());
