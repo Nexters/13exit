@@ -2,17 +2,20 @@ package kr.ac.nexters.knock.nexters.example.activity;
 
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,12 +47,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        actionBar = getSupportActionBar();
-        android.support.v7.internal.app.WindowDecorActionBar bar = (android.support.v7.internal.app.WindowDecorActionBar) actionBar;
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33000000")));
-        bar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
+//        actionBar = getSupportActionBar();
+//        android.support.v7.internal.app.WindowDecorActionBar bar = (android.support.v7.internal.app.WindowDecorActionBar) actionBar;
+//        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33000000")));
+//        bar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
+
+//        ActionBar actionBar = getActionBar();
+//
+//        ColorDrawable newColor = new ColorDrawable();//your color from res
+//        newColor.setAlpha(128);//from 0(0%) to 256(100%)
+//        getActionBar().setBackgroundDrawable(newColor);
 
         //use ImageLoader
         //ImageLoader.getInstance().displayImage("URL",partnerImage, MyApplication.getDisplayImageOptions());

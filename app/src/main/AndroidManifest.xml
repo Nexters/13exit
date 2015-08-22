@@ -73,7 +73,8 @@
 
         <activity
             android:name=".nexters.example.activity.MainActivity"
-            android:theme="@style/AppTheme"
+            android:theme="@style/MyActionBar"
+            android:label=""
             android:screenOrientation="portrait" />
         <!-- Fix splashActivity to TutorialActivity-->
         <activity

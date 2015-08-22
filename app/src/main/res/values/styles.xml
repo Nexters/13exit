@@ -15,15 +15,15 @@
     </style>
 
     <!-- ACTION BAR STYLES -->
-    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar">
+    <style name="MyActionBar" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowActionBarOverlay">true</item>
+        <item name="colorPrimary">@android:color/transparent</item>
 
         <!-- Support library compatibility -->
         <item name="background">@android:color/transparent</item>
         <item name="windowActionBarOverlay">true</item>
-
+        <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>

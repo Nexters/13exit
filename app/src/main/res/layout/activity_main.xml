@@ -17,6 +17,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"/>
+
         <kr.ac.nexters.knock.tools.RippleBackground
             android:id="@+id/main_partnerRoom"
             android:layout_width="match_parent"
