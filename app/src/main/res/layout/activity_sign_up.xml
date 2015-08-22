@@ -2,10 +2,29 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/sign_up_bg"
     tools:context="kr.ac.nexters.knock.nexters.example.activity.SignUpActivity">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1">
+
     <EditText
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/signup_et_inputname"
@@ -14,7 +33,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/moveNext"
+        android:layout_marginTop="30dp"
+        android:background="@mipmap/sign_up_btn"
         android:id="@+id/signup_btn_nextActivity" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -56,10 +56,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 		//현재 preference에 유저이름 저장 안되어있음.
 		TextView myName = (TextView)findViewById(R.id.profile_tv_myName);
-//		myName.setText(PreferenceManager.getInstance().getUserName());
+		myName.setText(PreferenceManager.getInstance().getUserName());
 
 		TextView myPhone = (TextView)findViewById(R.id.profile_tv_myPhone);
-		myPhone.setText("핸드폰번호");
+		myPhone.setText("010"+PreferenceManager.getInstance().getPhonenum());
 
 		ImageButton nameModi = (ImageButton) findViewById(R.id.profile_btn_modify);
 		LinearLayout btn_back = (LinearLayout) findViewById(R.id.title_backbtn);
@@ -101,15 +101,14 @@ public class ProfileActivity extends AppCompatActivity {
 
 	private void putDataInList(){
 		imageList.add(new GridItem(R.mipmap.btn_backgroundpicture_plus, -1));
-		imageList.add(new GridItem(R.mipmap.btn_backgroundpicture_plus, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
-		imageList.add(new GridItem(R.mipmap.ic_launcher, -1));
+		imageList.add(new GridItem(R.mipmap.bear, -1));
+		imageList.add(new GridItem(R.mipmap.bunny, -1));
+		imageList.add(new GridItem(R.mipmap.doggy, -1));
+		imageList.add(new GridItem(R.mipmap.fox, -1));
+		imageList.add(new GridItem(R.mipmap.kitty, -1));
+		imageList.add(new GridItem(R.mipmap.monkey, -1));
+		imageList.add(new GridItem(R.mipmap.robin, -1));
+		imageList.add(new GridItem(R.mipmap.sloth, -1));
 	}
 
 	AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener(){
@@ -152,5 +151,4 @@ public class ProfileActivity extends AppCompatActivity {
 			PreferenceManager.getInstance().setMyImg(getTempUri().toString());
 		}
 	}
-
 }

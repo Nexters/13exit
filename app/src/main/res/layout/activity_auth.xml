@@ -2,24 +2,64 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/auth_bg"
     tools:context="kr.ac.nexters.knock.nexters.example.activity.AuthActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:paddingLeft="10dp"
+        android:background="@mipmap/auth_edit"
+        android:gravity="center_vertical"
+        android:text="01064184227"
+        android:id="@+id/auth_tv_pnum_guid" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="50dp"
+        android:paddingLeft="10dp"
+        android:inputType="number"
+        android:background="@mipmap/auth_edit"
+        android:id="@+id/auth_et_partner_number" />
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@mipmap/auth_btn"
+        android:id="@+id/auth_btn_nextActivity" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="인증요청할 사람의 전화번호를 입력하세요"
-        android:id="@+id/auth_tv_pnum_guid" />
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:text="표시된 휴대폰 번호가 사실과 다른가요?"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/auth_et_partner_number" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="인증요청"
-        android:id="@+id/auth_btn_nextActivity" />
+    </LinearLayout>
 
 </LinearLayout>

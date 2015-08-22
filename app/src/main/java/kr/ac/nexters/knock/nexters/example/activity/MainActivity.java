@@ -1,7 +1,10 @@
 package kr.ac.nexters.knock.nexters.example.activity;
 
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -16,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.Objects;
 
 import kr.ac.nexters.knock.R;
 import kr.ac.nexters.knock.menu.BackgroundActivity;
@@ -34,13 +39,17 @@ public class MainActivity extends AppCompatActivity {
     String imagePath;
     ImageButton button_heart;
     NetworkModel instance;
+    Object actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
+        actionBar = getSupportActionBar();
+        android.support.v7.internal.app.WindowDecorActionBar bar = (android.support.v7.internal.app.WindowDecorActionBar) actionBar;
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#33000000")));
+        bar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
 
         //use ImageLoader
         //ImageLoader.getInstance().displayImage("URL",partnerImage, MyApplication.getDisplayImageOptions());
