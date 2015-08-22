@@ -242,7 +242,6 @@ public class PreferenceManager {
 
 
     //pname
-    //background img
     private static final String PNAME = "pname";
     private String pname = "";
 
