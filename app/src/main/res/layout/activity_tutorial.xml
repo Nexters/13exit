@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/splash">
+            android:background="@mipmap/tutorial00_2">
 
             <Button
                 android:id="@+id/tut_01"
@@ -29,7 +29,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/tutorial">
+            android:background="@mipmap/tutorial01">
 
             <Button
                 android:id="@+id/tut_02"
@@ -44,7 +44,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/splash">
+            android:background="@mipmap/tutorial02">
 
             <Button
                 android:id="@+id/tut_03"
@@ -59,7 +59,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/tutorial">
+            android:background="@mipmap/tutorial03">
 
             <Button
                 android:id="@+id/tut_04"
@@ -74,7 +74,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/splash">
+            android:background="@mipmap/tutorial04">
 
             <Button
                 android:id="@+id/tut_05"
@@ -84,8 +84,8 @@
                 android:layout_alignParentRight="true"
                 android:text="skip" />
         </RelativeLayout>
-
-        <!--tutorial 06-->
+<!--
+        &lt;!&ndash;tutorial 06&ndash;&gt;
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -99,5 +99,6 @@
                 android:layout_alignParentRight="true"
                 android:text="skip" />
         </RelativeLayout>
+        -->
     </ViewFlipper>
 </LinearLayout>

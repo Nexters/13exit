@@ -38,7 +38,7 @@ public class TutorialActivity extends AppCompatActivity {
         findViewById(R.id.tut_03).setOnClickListener(mClickListener);
         findViewById(R.id.tut_04).setOnClickListener(mClickListener);
         findViewById(R.id.tut_05).setOnClickListener(mClickListener);
-        findViewById(R.id.tut_06).setOnClickListener(mClickListener);
+//        findViewById(R.id.tut_06).setOnClickListener(mClickListener);
 
         mViewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
 
@@ -104,7 +104,7 @@ public class TutorialActivity extends AppCompatActivity {
                     goToPrevPage();
                 else if (mOldTouchX > currentX)
                     goToNextPage();
-                if(check==5){
+                if(check==4){
                     Intent i = new Intent(TutorialActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
