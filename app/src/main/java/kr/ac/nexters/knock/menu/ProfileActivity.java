@@ -109,7 +109,11 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
 
                 if (mSavedFile != null) {
+                    //photo
                     putImg();
+                }else{
+                    //default
+                    putImgs();
                 }
             }
         });
@@ -126,6 +130,19 @@ public class ProfileActivity extends AppCompatActivity {
         final String upfile = mSavedFile.getAbsolutePath();
         Log.i("UPFILE", upfile);
         NetworkModel.getInstance().setImage(upfile, new NetworkModel.OnNetworkResultListener<IsSuccess>() {
+            @Override
+            public void onResult(IsSuccess result) {
+            }
+
+            @Override
+            public void onFail(int code) {
+            }
+        });
+    }
+
+    public void putImgs() {
+        String img = PreferenceManager.getInstance().getMyImg();
+        NetworkModel.getInstance().setImg(img, new NetworkModel.OnNetworkResultListener<IsSuccess>() {
             @Override
             public void onResult(IsSuccess result) {
             }

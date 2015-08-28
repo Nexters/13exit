@@ -125,18 +125,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        //MYIMG
         if(PreferenceManager.getInstance().getMyImg().isEmpty()) {
 
         } else if (PreferenceManager.getInstance().getMyImg().length() < 15){
            //length말고 다른 방법.
             myImage.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getMyImg()));
         }
-        else
-            ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImage, MyApplication.getDisplayImageOptions());
-//       ImageLoader.getInstance().displayImage("URL", partnerImage, MyApplication.getDisplayImageOptions());
+        else {
+            ImageLoader.getInstance().displayImage(PreferenceManager.getInstance().getMyImg(), myImage, MyApplication.getDisplayImageOptions());
+        }
+
+        //Partener Img
+        if(PreferenceManager.getInstance().getPimg().length() < 15){
+
+        }else {
+
+        }
 
 
 
+        //BG
         if(PreferenceManager.getInstance().getBgImg().isEmpty()) {
 
         } else if (PreferenceManager.getInstance().getBgImg().length() < 15){
