@@ -9,6 +9,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
 /**
@@ -41,12 +44,13 @@ public class NetworkModel {
 		public void onFail(int code);
 	}
 
-	public void addUser(String userName, String phone, String uid, String pushId, final OnNetworkResultListener<IsSuccess> listener){
+	public void addUser(String userName, String phone, String uid, String pushId, String img, final OnNetworkResultListener<IsSuccess> listener){
 		RequestParams params = new RequestParams();
 		params.put("username",userName);
 		params.put("phonenum",phone);
 		params.put("uid",uid);
 		params.put("puid",pushId);
+		params.put("img","1");     //value is default
 
 		client.post(SERVER_URL+"adduser", params, new AsyncHttpResponseHandler() {
 			@Override
@@ -76,6 +80,7 @@ public class NetworkModel {
 		params.put("pid",pid);
 		params.put("name",name);
 		params.put("pushid",pushid);
+		params.put("myphone", PreferenceManager.getInstance().getPhonenum());
 
 		client.post(SERVER_URL + "sendauth", params, new AsyncHttpResponseHandler() {
 			@Override
@@ -106,37 +111,65 @@ public class NetworkModel {
 		client.post(SERVER_URL + "authaccept", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
+				String res = new String(responseBody);
+				Gson gson = new Gson();
+				IsSuccess result = new IsSuccess();
+				result = gson.fromJson(res, IsSuccess.class);
+				listener.onResult(result);
 			}
 
 			@Override
 			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+				listener.onFail(statusCode);
 			}
 		});
 	}
 
 	public void knock(final OnNetworkResultListener<IsSuccess> listener){
-		RequestParams params = new RequestParams();
-
-		Log.i("(NM)knock to ", PreferenceManager.getInstance().getPpushId());
-
-		//params.put("pushid", PreferenceManager.getInstance().getPpushId());
-
 		String puid = PreferenceManager.getInstance().getPuid();
+
+		RequestParams params = new RequestParams();
 		params.put("puid", puid);
 
 		client.post(SERVER_URL + "knock", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
+				String res = new String(responseBody);
+				Gson gson = new Gson();
+				IsSuccess result = new IsSuccess();
+				result = gson.fromJson(res, IsSuccess.class);
+				listener.onResult(result);
 			}
 
 			@Override
 			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+				listener.onFail(statusCode);
 			}
 		});
+	}
+
+	public void setImage(String file, final OnNetworkResultListener<IsSuccess> listener){
+		RequestParams params = new RequestParams();
+        params.put("uid", PreferenceManager.getInstance().getUid());
+		try {
+			params.put("upfile", new File(file));
+		}catch (FileNotFoundException e){
+			e.printStackTrace();
+            Log.i("TAAS","ERROR");
+		}
+
+        client.post(SERVER_URL + "image", params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Log.i("IMAGE","Image upfile");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+
 	}
 
 }
