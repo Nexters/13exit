@@ -22,4 +22,6 @@
     <string name="moveNext">다음으로 이동</string>
     <string name="title_activity_auth_req">AuthReqActivity</string>
     <string name="title_activity_accept_auth">AcceptAuthActivity</string>
+    <string name="title_activity_app_info">AppInfoActivity</string>
+    <string name="title_activity_dev_info">DevInfoActivity</string>
 </resources>

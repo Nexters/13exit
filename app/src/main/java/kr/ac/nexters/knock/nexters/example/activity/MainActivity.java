@@ -25,6 +25,7 @@ import kr.ac.nexters.knock.menu.SettingActivity;
 
 import kr.ac.nexters.knock.network.IsSuccess;
 import kr.ac.nexters.knock.network.NetworkModel;
+import kr.ac.nexters.knock.tools.BackPressCloseHandler;
 import kr.ac.nexters.knock.tools.MyApplication;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 import kr.ac.nexters.knock.tools.RippleBackground;
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton button_heart;
     NetworkModel instance;
     Handler handler = new Handler();
+
+    //backpressed
+    private BackPressCloseHandler backPressCloseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }, 0);
         }
+
+        //backpressed
+        backPressCloseHandler = new BackPressCloseHandler(this);
 
 
                 //use ImageLoader
@@ -169,5 +176,13 @@ public class MainActivity extends AppCompatActivity {
         }
         startActivity(intent);
         return false;
+    }
+
+    //backpressed
+    @Override
+    public void onBackPressed() {
+
+        backPressCloseHandler.onBackPressed();
+
     }
 }

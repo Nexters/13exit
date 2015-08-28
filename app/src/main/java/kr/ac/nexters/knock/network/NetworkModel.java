@@ -9,6 +9,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
 /**
@@ -18,7 +21,7 @@ import kr.ac.nexters.knock.tools.PreferenceManager;
  */
 public class NetworkModel {
 	
-	private static String SERVER_URL = "http://52.69.130.243:8300/";
+	private static String SERVER_URL = "http://52.69.130.243:8330/";
 	
 	AsyncHttpClient client;
 	
@@ -47,6 +50,7 @@ public class NetworkModel {
 		params.put("phonenum",phone);
 		params.put("uid",uid);
 		params.put("puid",pushId);
+		params.put("myphone", PreferenceManager.getInstance().getPhonenum());
 
 		client.post(SERVER_URL+"adduser", params, new AsyncHttpResponseHandler() {
 			@Override
@@ -76,6 +80,7 @@ public class NetworkModel {
 		params.put("pid",pid);
 		params.put("name",name);
 		params.put("pushid",pushid);
+		params.put("myphone", PreferenceManager.getInstance().getPhonenum());
 
 		client.post(SERVER_URL + "sendauth", params, new AsyncHttpResponseHandler() {
 			@Override
@@ -130,6 +135,29 @@ public class NetworkModel {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
+			}
+
+			@Override
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+			}
+		});
+	}
+
+	public void setImage(String file, final OnNetworkResultListener<IsSuccess> listener) {
+		RequestParams params = new RequestParams();
+		params.put("phone", PreferenceManager.getInstance().getPhonenum());
+		try {
+			params.put("upfile", new File(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			Log.i("TAAS", "ERROR");
+		}
+
+		client.post(SERVER_URL + "image", params, new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+				Log.i("IMAGE", "Image upfile");
 			}
 
 			@Override

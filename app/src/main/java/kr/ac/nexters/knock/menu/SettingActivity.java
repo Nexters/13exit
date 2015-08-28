@@ -1,5 +1,6 @@
 package kr.ac.nexters.knock.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import kr.ac.nexters.knock.R;
+import kr.ac.nexters.knock.nexters.example.activity.AppInfoActivity;
+import kr.ac.nexters.knock.nexters.example.activity.DevInfoActivity;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
 public class SettingActivity extends AppCompatActivity {
@@ -43,7 +46,7 @@ public class SettingActivity extends AppCompatActivity {
 		myAccount.setText("010"+PreferenceManager.getInstance().getPhonenum());
 
 		TextView linkedAccount = (TextView)findViewById(R.id.setting_tv_linkedAccount);
-		linkedAccount.setText("linked_account");
+		linkedAccount.setText("010 "+PreferenceManager.getInstance().getPphoneNum());
 
 		LinearLayout btn_back = (LinearLayout) findViewById(R.id.title_backbtn);
 		btn_back.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +97,8 @@ public class SettingActivity extends AppCompatActivity {
 	View.OnClickListener appInfoListener = new View.OnClickListener(){
 		@Override
 		public void onClick(View v) {
-			Toast.makeText(SettingActivity.this, "appInfo", Toast.LENGTH_SHORT).show();
+			Intent i = new Intent(SettingActivity.this, AppInfoActivity.class);
+			startActivity(i);
 		}
 	};
 
@@ -102,7 +106,8 @@ public class SettingActivity extends AppCompatActivity {
 	View.OnClickListener devInfoListener = new View.OnClickListener(){
 		@Override
 		public void onClick(View v) {
-			Toast.makeText(SettingActivity.this, "devInfo", Toast.LENGTH_SHORT).show();
+			Intent i = new Intent(SettingActivity.this, DevInfoActivity.class);
+			startActivity(i);
 		}
 	};
 

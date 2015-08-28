@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/tutorial00_2">
+            android:background="@mipmap/tutorial00">
 
             <Button
                 android:id="@+id/tut_01"

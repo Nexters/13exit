@@ -73,15 +73,14 @@
 
         <activity
             android:name=".nexters.example.activity.MainActivity"
-            android:theme="@style/MyActionBar"
             android:label=""
-            android:screenOrientation="portrait" />
-        <!-- Fix splashActivity to TutorialActivity-->
+            android:screenOrientation="portrait"
+            android:theme="@style/MyActionBar" />
+        <!-- Fix splashActivity to TutorialActivity -->
         <activity
             android:name=".nexters.example.activity.SplashActivity"
-            android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
-             >
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -100,7 +99,7 @@
             android:name=".menu.ProfileActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing"/>
+            android:windowSoftInputMode="adjustNothing" />
 
         <receiver
             android:name=".widget.Widget"
@@ -108,21 +107,23 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/widget"/>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget" />
         </receiver>
 
         <activity
             android:name=".nexters.example.activity.SignUpActivity"
             android:label="@string/title_activity_sign_up"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".nexters.example.activity.AuthActivity"
             android:label="@string/title_activity_auth"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".nexters.example.activity.TutorialActivity"
@@ -136,7 +137,15 @@
         <activity
             android:name=".dialog.AcceptAuthActivity"
             android:label="@string/title_activity_accept_auth"
-            android:theme="@android:style/Theme.Dialog">
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name=".nexters.example.activity.AppInfoActivity"
+            android:label="@string/title_activity_app_info" >
+        </activity>
+        <activity
+            android:name=".nexters.example.activity.DevInfoActivity"
+            android:label="@string/title_activity_dev_info" >
         </activity>
     </application>
 

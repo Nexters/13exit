@@ -50,17 +50,19 @@ public class MyGcmListenerService   extends GcmListenerService {
         String type = data.getString("type");
         String name = data.getString("name");
         String pushid = data.getString("pushid");
+        String pphone = data.getString("myphone");
+
 
         Log.i("data", title + "," + message + "," + sender + "," + type + "," + name);
 
         // GCM으로 받은 메세지를 디바이스에 알려주는 sendNotification()을 호출한다.
         if(type.equals("auth")){
             //인증요청을 받았다 -> 타이틀, 메시지, 요청을 보낸사람 UID, 이름,pushid
-            authNotification(title, message, sender,pushid,name);
+            authNotification(title, message, sender,pushid,name, pphone);
             Log.i("Noti", "auth");
         }else if(type.equals("accept")) {
             //인증승인을 받았다 -> 타이틀, 메세지, 요청을 수락한사람의 uid와 pushid
-            acceptNotification(title,message,sender, pushid);
+            acceptNotification(title,message,sender, pushid, name);
             Log.i("Noti", "accept");
         }else{
             sendNotification(title, message);
@@ -78,7 +80,10 @@ public class MyGcmListenerService   extends GcmListenerService {
     private void sendNotification(String title, String message) {
 
         if(PreferenceManager.getInstance().getWithVib()){
-
+            Vibrator mVib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+            long[] vibratePattern = {100, 100, 300};
+            mVib.vibrate(300);
+            mVib.vibrate(vibratePattern, -1);
         }
 
         Intent intent = new Intent(MyGcmListenerService.this, MainActivity.class);
@@ -89,27 +94,31 @@ public class MyGcmListenerService   extends GcmListenerService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        String pname = PreferenceManager.getInstance().getPname();
+        String myname = PreferenceManager.getInstance().getUserName();
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(title)
-                .setContentText(message)
+                .setSmallIcon(R.mipmap.shadow_icon)
+                .setContentTitle("콕콕")
+                .setContentText(pname+"님이 "+myname+"님을 콕 찔렀어요 !")
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
 
     }
 
     //A가 요청을 보내면 B에게 이게 뜸 그럼 sender는 puid pushid는 ppushid
-    private void authNotification(String title, String message, final String sender, final String pushid, String name){
+    private void authNotification(String title, String message, final String sender, final String pushid, String name, String pphone){
         Log.i("auth ppushid", pushid);
         PreferenceManager.getInstance().setPuid(sender);
         PreferenceManager.getInstance().setPpushId(pushid);
+        PreferenceManager.getInstance().setPphoneNum(pphone);
+        PreferenceManager.getInstance().setPname(name);
 
+        Log.i("TTTT", PreferenceManager.getInstance().getPphoneNum());
 
         Intent in = new Intent(MyGcmListenerService.this, AuthReqActivity.class);
         in.putExtra("pname",name);
@@ -123,13 +132,14 @@ public class MyGcmListenerService   extends GcmListenerService {
     }
 
     //상대방이 요청을 수락했다는 메시지를 받음
-    private void acceptNotification(String title,String message, final String sender, final String pushid){
+    private void acceptNotification(String title,String message, final String sender, final String pushid, String name){
         //타이틀, 메세지, 요청을 수락한사람의 uid와 pushid
 
         Log.i("GCM accept ppushid", pushid);
 
         PreferenceManager.getInstance().setPuid(sender);
         PreferenceManager.getInstance().setPpushId(pushid);
+        PreferenceManager.getInstance().setPname(name);
 
         Intent in = new Intent(MyGcmListenerService.this, AcceptAuthActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, in,PendingIntent.FLAG_ONE_SHOT);
@@ -171,7 +181,6 @@ public class MyGcmListenerService   extends GcmListenerService {
 
             @Override
             public void onFail(int code) {
-
             }
         });
     }

@@ -82,6 +82,8 @@ public class AuthActivity extends ActionBarActivity {
 
                 String phone = et_inputPartnerNum.getText().toString();
                 phone = phone.substring(phone.length()-8, phone.length());
+                PreferenceManager.getInstance().setPphoneNum(phone);
+
                 NetworkModel.getInstance().authSend(phone, new NetworkModel.OnNetworkResultListener<IsSuccess>() {
                     @Override
                     public void onResult(IsSuccess result) {
