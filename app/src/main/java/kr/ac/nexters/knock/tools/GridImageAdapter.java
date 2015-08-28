@@ -1,6 +1,7 @@
 package kr.ac.nexters.knock.tools;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,15 +56,19 @@ public class GridImageAdapter extends BaseAdapter {
         ImageView custom_main_item = (ImageView) convertView.findViewById(R.id.custom_main_item);
         ImageView sub_item = (ImageView) convertView.findViewById(R.id.sub_item);
 
+//        if(custom_main_item != null) {
+//            ((BitmapDrawable)custom_main_item.getDrawable()).getBitmap().recycle();
+//        }
+
         custom_main_item.setImageResource(imageList.get(position).getMainItemID());
 
-        /*
+
         if(layout == R.layout.item_backgroundgrid && position == 0 && PreferenceManager.getInstance().getBgSelect() == 0){
             ImageLoader.getInstance().displayImage("file:///storage/emulated/0//background.jpg", custom_main_item, MyApplication.getDisplayImageOptions());
         }
 
         sub_item.setImageResource(imageList.get(position).getSubItemID());
-        */
+
         return convertView;
     }
 }

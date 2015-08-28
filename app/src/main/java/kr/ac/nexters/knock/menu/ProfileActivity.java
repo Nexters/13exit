@@ -128,7 +128,7 @@ public class ProfileActivity extends AppCompatActivity {
 	}
 
 	private void putDataInList(){
-		imageList.add(new GridItem(R.mipmap.btn_backgroundpicture_plus2, -1));
+		imageList.add(new GridItem(R.mipmap.profile_picplus_bt, -1));
 		imageList.add(new GridItem(R.mipmap.bear, -1));
 		imageList.add(new GridItem(R.mipmap.bunny, -1));
 		imageList.add(new GridItem(R.mipmap.doggy, -1));
