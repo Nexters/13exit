@@ -312,5 +312,10 @@ public class PreferenceManager {
     }
 
 
+    //clear
+    public void clear(){
+        mEditor.clear();
+        mEditor.commit();
+    }
 
 }

@@ -11,7 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import kr.ac.nexters.knock.R;
+import kr.ac.nexters.knock.network.IsSuccess;
+import kr.ac.nexters.knock.network.NetworkModel;
 import kr.ac.nexters.knock.nexters.example.activity.AppInfoActivity;
+import kr.ac.nexters.knock.nexters.example.activity.AuthActivity;
 import kr.ac.nexters.knock.nexters.example.activity.DevInfoActivity;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
@@ -116,6 +119,15 @@ public class SettingActivity extends AppCompatActivity {
 	View.OnClickListener delAccountListener = new View.OnClickListener(){
 		@Override
 		public void onClick(View v) {
+            NetworkModel.getInstance().clear(new NetworkModel.OnNetworkResultListener<IsSuccess>() {
+                @Override
+                public void onResult(IsSuccess result) {
+                }
+
+                @Override
+                public void onFail(int code) {
+                }
+            });
 			Toast.makeText(SettingActivity.this, "delAccount", Toast.LENGTH_SHORT).show();
 		}
 	};

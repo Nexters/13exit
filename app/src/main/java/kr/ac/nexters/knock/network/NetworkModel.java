@@ -167,4 +167,22 @@ public class NetworkModel {
 		});
 	}
 
+    public void clear(final OnNetworkResultListener<IsSuccess> listener){
+        RequestParams params = new RequestParams();
+        params.put("uid", PreferenceManager.getInstance().getUid());
+
+        client.post(SERVER_URL + "clear", params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                //Preference.clear;
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
 }

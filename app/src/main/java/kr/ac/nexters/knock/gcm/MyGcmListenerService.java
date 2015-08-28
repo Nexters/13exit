@@ -27,6 +27,7 @@ import kr.ac.nexters.knock.network.IsSuccess;
 import kr.ac.nexters.knock.network.NetworkModel;
 import kr.ac.nexters.knock.nexters.example.activity.AuthActivity;
 import kr.ac.nexters.knock.nexters.example.activity.MainActivity;
+import kr.ac.nexters.knock.nexters.example.activity.SplashActivity;
 import kr.ac.nexters.knock.nexters.example.activity.TutorialActivity;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
@@ -62,8 +63,10 @@ public class MyGcmListenerService   extends GcmListenerService {
             Log.i("Noti", "auth");
         }else if(type.equals("accept")) {
             //인증승인을 받았다 -> 타이틀, 메세지, 요청을 수락한사람의 uid와 pushid
-            acceptNotification(title,message,sender, pushid, name);
+            acceptNotification(title, message, sender, pushid, name);
             Log.i("Noti", "accept");
+        }else if(type.equals("clear")) {
+            clear();
         }else{
             sendNotification(title, message);
             Log.i("Noti", "msg");
@@ -169,6 +172,12 @@ public class MyGcmListenerService   extends GcmListenerService {
             }
         });
         ab.show();*/
+    }
+
+    public void clear() {
+        PreferenceManager.getInstance().clear();
+        //Intent in = new Intent(MyGcmListenerService.this, SplashActivity.class);
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, in,PendingIntent.FLAG_ONE_SHOT);
     }
 
     private void authAccept(){
