@@ -202,6 +202,7 @@ public class ProfileActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
+                Toast.makeText(getApplicationContext(), "좌측 상단의 버튼을 눌러주세요", Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onKeyDown(keyCode, event);
