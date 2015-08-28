@@ -40,10 +40,10 @@ public class SettingActivity extends AppCompatActivity {
 
 		//전화번호 표시
 		TextView myAccount = (TextView)findViewById(R.id.setting_tv_myAccount);
-		myAccount.setText("010 "+PreferenceManager.getInstance().getPhonenum());
+		myAccount.setText("010"+PreferenceManager.getInstance().getPhonenum());
 
 		TextView linkedAccount = (TextView)findViewById(R.id.setting_tv_linkedAccount);
-		linkedAccount.setText("010 "+PreferenceManager.getInstance().getPphoneNum());
+		linkedAccount.setText("linked_account");
 
 		LinearLayout btn_back = (LinearLayout) findViewById(R.id.title_backbtn);
 		btn_back.setOnClickListener(new View.OnClickListener() {

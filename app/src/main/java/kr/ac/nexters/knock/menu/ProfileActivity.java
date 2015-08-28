@@ -5,18 +5,21 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,9 +30,6 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import kr.ac.nexters.knock.R;
-import kr.ac.nexters.knock.network.IsSuccess;
-import kr.ac.nexters.knock.network.NetworkModel;
-import kr.ac.nexters.knock.nexters.example.activity.AuthActivity;
 import kr.ac.nexters.knock.tools.GridImageAdapter;
 import kr.ac.nexters.knock.tools.GridItem;
 import kr.ac.nexters.knock.tools.ImageViewRounded;
@@ -55,15 +55,14 @@ public class ProfileActivity extends AppCompatActivity {
 		//hide actionbar
 		getSupportActionBar().hide();
 
-
 		myImg = (ImageViewRounded)findViewById(R.id.profile_iv_preview);
 
 		//현재 preference에 유저이름 저장 안되어있음.
-		TextView myName = (TextView)findViewById(R.id.profile_tv_myName);
+		final TextView myName = (TextView)findViewById(R.id.profile_tv_myName);
 		myName.setText(PreferenceManager.getInstance().getUserName());
 
 		TextView myPhone = (TextView)findViewById(R.id.profile_tv_myPhone);
-		myPhone.setText("010"+PreferenceManager.getInstance().getPhonenum());
+		myPhone.setText("010"+ PreferenceManager.getInstance().getPhonenum());
 
 		ImageButton nameModi = (ImageButton) findViewById(R.id.profile_btn_modify);
 		LinearLayout btn_back = (LinearLayout) findViewById(R.id.title_backbtn);
@@ -71,7 +70,32 @@ public class ProfileActivity extends AppCompatActivity {
 		nameModi.setOnClickListener(new ImageButton.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(ProfileActivity.this, "수정요청", Toast.LENGTH_SHORT).show();
+				AlertDialog.Builder alert = new AlertDialog.Builder(ProfileActivity.this);
+				alert.setTitle("Title");
+				alert.setMessage("Message");
+
+				// Set an EditText view to get user input
+				final EditText input = new EditText(ProfileActivity.this);
+				input.setText(PreferenceManager.getInstance().getUserName());
+				alert.setView(input);
+
+				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						String value = input.getText().toString();
+						PreferenceManager.getInstance().setUserName(value);
+						myName.setText(value);
+					}
+				});
+
+
+				alert.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								// Canceled.
+							}
+						});
+
+				alert.show();
 			}
 		});
 
@@ -79,9 +103,6 @@ public class ProfileActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				finish();
-                if(mSavedFile != null){
-                    putImg();
-                }
 			}
 		});
 
@@ -91,21 +112,6 @@ public class ProfileActivity extends AppCompatActivity {
 		grid_profileSelect.setAdapter(adapter);
 		grid_profileSelect.setOnItemClickListener(itemClickListener);
 	}
-
-    public void putImg(){
-        //send change image
-        final String upfile = mSavedFile.getAbsolutePath();
-        Log.i("UPFILE", upfile);
-        NetworkModel.getInstance().setImage(upfile, new NetworkModel.OnNetworkResultListener<IsSuccess>(){
-            @Override
-            public void onResult(IsSuccess result) {
-            }
-
-            @Override
-            public void onFail(int code) {
-            }
-        });
-    }
 
 	@Override
 	protected void onStart() {
@@ -118,11 +124,11 @@ public class ProfileActivity extends AppCompatActivity {
 			myImg.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getMyImg()));
 		}
 		else
-			ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine"+PreferenceManager.getInstance().getPhonenum()+".jpg", myImg, MyApplication.getDisplayImageOptions());
+			ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImg, MyApplication.getDisplayImageOptions());
 	}
 
 	private void putDataInList(){
-		imageList.add(new GridItem(R.mipmap.btn_backgroundpicture_plus2, -1));
+		imageList.add(new GridItem(R.mipmap.profile_picplus_bt, -1));
 		imageList.add(new GridItem(R.mipmap.bear, -1));
 		imageList.add(new GridItem(R.mipmap.bunny, -1));
 		imageList.add(new GridItem(R.mipmap.doggy, -1));
@@ -160,7 +166,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 	private Uri getTempUri() {
-		mSavedFile = new File(Environment.getExternalStorageDirectory(),"mine"+PreferenceManager.getInstance().getPhonenum() +".jpg");
+		mSavedFile = new File(Environment.getExternalStorageDirectory(),"mine.jpg");
 		return Uri.fromFile(mSavedFile);
 	}
 
@@ -169,7 +175,7 @@ public class ProfileActivity extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == REQUEST_CODE_CROP && resultCode == Activity.RESULT_OK) {
-			ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine"+PreferenceManager.getInstance().getPhonenum() +".jpg", myImg, MyApplication.getDisplayImageOptions());
+			ImageLoader.getInstance().displayImage("file:///storage/emulated/0//mine.jpg", myImg, MyApplication.getDisplayImageOptions());
 			PreferenceManager.getInstance().setMyImg(getTempUri().toString());
 		}
 	}

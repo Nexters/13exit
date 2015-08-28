@@ -6,9 +6,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -31,16 +34,41 @@ public class MainActivity extends AppCompatActivity {
     ImageView myImage, partnerImage, background;
     ImageButton button_heart;
     NetworkModel instance;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //use ImageLoader
+        final RippleBackground partnerRipple=(RippleBackground)findViewById(R.id.main_partnerRoom);
+        final RippleBackground myRipple=(RippleBackground)findViewById(R.id.main_myRoom);
+
+        Intent intent=new Intent(this.getIntent());
+        String animation = intent.getStringExtra("animation");
+
+        if (animation != null && animation.equals("stopRipple")){
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    partnerRipple.stopRippleAnimation();
+                    myRipple.startRippleAnimation();
+                }
+            }, 0);
+        }
+
+
+                //use ImageLoader
         //ImageLoader.getInstance().displayImage("URL",partnerImage, MyApplication.getDisplayImageOptions());
 
         myImage = (ImageView) findViewById(R.id.main_myImg);
+        myImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         partnerImage = (ImageView) findViewById(R.id.main_partnerImg);
         background = (ImageView) findViewById(R.id.main_background);
@@ -53,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
 //        //layout wave animation test
 //        animation = (LinearLayout) findViewById(R.id.animation);
 
-        final RippleBackground rippleBackground=(RippleBackground)findViewById(R.id.main_partnerRoom);
-        final Handler handler=new Handler();
         button_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,11 +99,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                // rippleBackground.startRippleAnimation();
+
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        rippleBackground.startRippleAnimation();
+                        myRipple.stopRippleAnimation();
+                       partnerRipple.startRippleAnimation();
                     }
                 }, 0);
             }
