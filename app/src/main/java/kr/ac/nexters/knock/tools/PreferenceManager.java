@@ -222,22 +222,6 @@ public class PreferenceManager {
         return myImg;
     }
 
-    //partner img
-    private static final String PIMG = "pImg";
-    private String pImg = "";
-
-    public void setPimg(String pImg){
-        this.pImg = pImg;
-        mEditor.putString(MYIMG, pImg);
-        mEditor.commit();
-    }
-
-    public String getPimg(){
-        if(pImg.equals("")){
-            pImg = mPrefs.getString(PIMG, "");
-        }
-        return pImg;
-    }
 
     //background img
     private static final String BGIMG = "bgImg";
@@ -292,22 +276,6 @@ public class PreferenceManager {
         return bgSelect;
     }
 
-    //partner phone number
-    private static final String PPHONENUM = "pphone";
-    private String pphonenum = "";
-
-    public void setPphoneNum(String pphonenum){
-        this.pphonenum = pphonenum;
-        mEditor.putString(PPHONENUM, pphonenum);
-        mEditor.commit();
-    }
-
-    public String getPphoneNum(){
-        if(pphonenum.equals("")){
-            pphonenum = mPrefs.getString(PPHONENUM, "");
-        }
-        return pphonenum;
-    }
 
 
 }
