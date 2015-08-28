@@ -19,6 +19,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,14 +28,18 @@ import android.widget.Toast;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.UUID;
 
 import kr.ac.nexters.knock.R;
 import kr.ac.nexters.knock.gcm.QuickstartPreferences;
 import kr.ac.nexters.knock.gcm.RegistrationIntentService;
+import kr.ac.nexters.knock.menu.ProfileActivity;
 import kr.ac.nexters.knock.network.IsSuccess;
 import kr.ac.nexters.knock.network.NetworkModel;
+import kr.ac.nexters.knock.tools.ImageViewRounded;
+import kr.ac.nexters.knock.tools.MyApplication;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -47,6 +52,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     private Button btn_moveNext;
     private EditText et_inputName;
+    private FrameLayout btn_setProfile;
+    private ImageViewRounded myImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,14 +87,21 @@ public class SignUpActivity extends AppCompatActivity {
                 return true;
             }
         });
+        btn_setProfile = (FrameLayout)findViewById(R.id.signup_btn_profile);
+        btn_setProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SignUpActivity.this, "준비중입니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
         btn_moveNext = (Button)findViewById(R.id.signup_btn_nextActivity);
         btn_moveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!PreferenceManager.getInstance().getPushId().equals("")) {
+                if (!PreferenceManager.getInstance().getPushId().equals("")) {
                     addUser(et_inputName.getText().toString());
                     PreferenceManager.getInstance().setUserName(et_inputName.getText().toString());
-                }else {
+                } else {
                     Toast.makeText(mContext, "토큰이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
             }

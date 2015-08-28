@@ -25,18 +25,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="88dp"
+                android:gravity="center">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="54dp"
-                android:layout_marginTop="53dp"
+                android:layout_gravity="center_vertical"
                 android:src="@mipmap/bg_step_2"/>
+
+            </LinearLayout>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -44,18 +52,35 @@
                 android:layout_marginBottom="29dp"
                 android:src="@mipmap/bg_logo"/>
 
-            <ImageView
-                android:layout_width="155dp"
-                android:layout_height="155dp"
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="27dp"
-                android:src="@mipmap/btn_profile_plus"/>
+                android:id="@+id/auth_btn_profile">
+
+
+                <kr.ac.nexters.knock.tools.ImageViewRounded
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_profile_plusicon"
+                    android:id="@+id/auth_myImg"/>
+
+                <ImageView
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
+                    android:src="@mipmap/btn_profile_blank"/>
+
+            </FrameLayout>
+
 
             <EditText
                 android:layout_width="248dp"
                 android:layout_height="56dp"
                 android:layout_marginBottom="15dp"
-                android:paddingLeft="65dp"
-                android:text="내 번호 보여주기"
+                android:gravity="center"
+                android:imeOptions="actionDone"
                 android:textSize="15sp"
                 android:textColor="#f48967"
                 android:editable="false"
@@ -66,10 +91,12 @@
                 android:layout_width="248dp"
                 android:layout_height="56dp"
                 android:layout_marginBottom="40dp"
-                android:paddingLeft="65dp"
+                android:gravity="center"
+                android:imeOptions="actionDone"
                 android:text="상대방 번호를 입력하세요"
                 android:textSize="15sp"
                 android:textColor="#f48967"
+                android:inputType="number"
                 android:background="@mipmap/bg_name_box_plus_dingbat"
                 android:id="@+id/auth_et_partner_number"/>
 

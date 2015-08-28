@@ -25,18 +25,25 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="54dp"
-                android:layout_marginTop="53dp"
-                android:src="@mipmap/bg_step_1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="88dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bg_step_1"/>
+
+            </LinearLayout>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -44,11 +51,27 @@
                 android:layout_marginBottom="29dp"
                 android:src="@mipmap/bg_logo"/>
 
-            <ImageView
-                android:layout_width="155dp"
-                android:layout_height="155dp"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="27dp"
-                android:src="@mipmap/btn_profile_plus"/>
+                android:id="@+id/signup_btn_profile">
+
+                <kr.ac.nexters.knock.tools.ImageViewRounded
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_profile_plusicon"
+                    android:id="@+id/signup_myImg"/>
+
+
+                <ImageView
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
+                    android:src="@mipmap/btn_profile_blank"/>
+
+
+            </FrameLayout>
 
             <EditText
                 android:layout_width="248dp"

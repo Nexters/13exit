@@ -83,7 +83,7 @@ public class MyGcmListenerService   extends GcmListenerService {
 
         Intent intent = new Intent(MyGcmListenerService.this, MainActivity.class);
         //intent에 data담아서 넘겨줌 -> 애니메이션 동작
-        intent.putExtra("animation", "");
+        intent.putExtra("animation", "stopRipple");
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
