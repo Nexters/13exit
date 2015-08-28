@@ -50,13 +50,13 @@ public class MyGcmListenerService   extends GcmListenerService {
         String type = data.getString("type");
         String name = data.getString("name");
         String pushid = data.getString("pushid");
-
+        String pphone = data.getString("myphone");
         Log.i("data", title + "," + message + "," + sender + "," + type + "," + name);
 
         // GCM으로 받은 메세지를 디바이스에 알려주는 sendNotification()을 호출한다.
         if(type.equals("auth")){
             //인증요청을 받았다 -> 타이틀, 메시지, 요청을 보낸사람 UID, 이름,pushid
-            authNotification(title, message, sender,pushid,name);
+            authNotification(title, message, sender,pushid,name,pphone);
             Log.i("Noti", "auth");
         }else if(type.equals("accept")) {
             //인증승인을 받았다 -> 타이틀, 메세지, 요청을 수락한사람의 uid와 pushid
@@ -105,10 +105,11 @@ public class MyGcmListenerService   extends GcmListenerService {
     }
 
     //A가 요청을 보내면 B에게 이게 뜸 그럼 sender는 puid pushid는 ppushid
-    private void authNotification(String title, String message, final String sender, final String pushid, String name){
+    private void authNotification(String title, String message, final String sender, final String pushid, String name, String pphone){
         Log.i("auth ppushid", pushid);
         PreferenceManager.getInstance().setPuid(sender);
         PreferenceManager.getInstance().setPpushId(pushid);
+        PreferenceManager.getInstance().setPphoneNum(pphone);
 
 
         Intent in = new Intent(MyGcmListenerService.this, AuthReqActivity.class);
