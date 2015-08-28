@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <ViewFlipper
         android:id="@+id/viewflipper"
@@ -22,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="skip" />
+                android:background="@android:color/transparent" />
         </RelativeLayout>
 
         <!--tutorial 02-->
@@ -37,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="skip" />
+                android:background="@android:color/transparent" />
         </RelativeLayout>
 
         <!--tutorial 03-->
@@ -52,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="skip" />
+                android:background="@android:color/transparent" />
         </RelativeLayout>
 
         <!--tutorial 04-->
@@ -67,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="skip" />
+                android:background="@android:color/transparent" />
         </RelativeLayout>
 
         <!--tutorial 05-->
@@ -82,23 +81,23 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:text="skip" />
+                android:background="@android:color/transparent" />
         </RelativeLayout>
-<!--
-        &lt;!&ndash;tutorial 06&ndash;&gt;
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/tutorial">
+        <!--
+                &lt;!&ndash;tutorial 06&ndash;&gt;
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/tutorial">
 
-            <Button
-                android:id="@+id/tut_06"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:text="skip" />
-        </RelativeLayout>
-        -->
+                    <Button
+                        android:id="@+id/tut_06"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                         />
+                </RelativeLayout>
+                -->
     </ViewFlipper>
 </LinearLayout>
