@@ -140,10 +140,13 @@ public class SignUpActivity extends AppCompatActivity {
 
         PreferenceManager.getInstance().setUid(deviceId);
 
+        //get img
+        String img = null;
+
         //get Push id
         String token = PreferenceManager.getInstance().getPushId();
 
-        NetworkModel.getInstance().addUser(userName, phoneNum, deviceId, token, new NetworkModel.OnNetworkResultListener<IsSuccess>() {
+        NetworkModel.getInstance().addUser(userName, phoneNum, deviceId, token, img, new NetworkModel.OnNetworkResultListener<IsSuccess>() {
 
             @Override
             public void onResult(IsSuccess result) {
