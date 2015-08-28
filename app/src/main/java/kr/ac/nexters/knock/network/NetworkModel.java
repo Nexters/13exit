@@ -148,7 +148,9 @@ public class NetworkModel {
 		RequestParams params = new RequestParams();
 		params.put("phone", PreferenceManager.getInstance().getPhonenum());
         params.put("name", PreferenceManager.getInstance().getUserName());
-		try {
+        params.put("pphone", PreferenceManager.getInstance().getPphoneNum());
+
+        try {
 			params.put("upfile", new File(file));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

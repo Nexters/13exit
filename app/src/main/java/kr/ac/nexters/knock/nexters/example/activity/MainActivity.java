@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity{
         instance = NetworkModel.getInstance();
 
         Log.i("(MA)knock to ", PreferenceManager.getInstance().getPpushId());
-
 //        //layout wave animation test
 //        animation = (LinearLayout) findViewById(R.id.animation);
 
@@ -218,6 +217,6 @@ public class MainActivity extends AppCompatActivity{
     public void onBackPressed() {
 
         backPressCloseHandler.onBackPressed();
-
     }
+
 }

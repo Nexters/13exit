@@ -283,7 +283,7 @@ public class PreferenceManager {
 
     public void setPimg(String pImg){
         this.pImg = pImg;
-        mEditor.putString(MYIMG, pImg);
+        mEditor.putString(PIMG, pImg);
         mEditor.commit();
     }
 
