@@ -102,8 +102,8 @@ public class MyGcmListenerService   extends GcmListenerService {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.shadow_icon)
-                .setContentTitle("똑똑")
-                .setContentText(pname+"님이 "+myname+"님을 콕 찔렀어요 !")
+                .setContentTitle("KNOCK")
+                .setContentText(pname+"님이 "+myname+"님을 노크했어요!")
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
