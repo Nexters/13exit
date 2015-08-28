@@ -169,7 +169,8 @@ public class NetworkModel {
 
     public void clear(final OnNetworkResultListener<IsSuccess> listener){
         RequestParams params = new RequestParams();
-        params.put("uid", PreferenceManager.getInstance().getUid());
+        params.put("myphone", PreferenceManager.getInstance().getPhonenum());
+        params.put("pphone", PreferenceManager.getInstance().getPphoneNum());
 
         client.post(SERVER_URL + "clear", params, new AsyncHttpResponseHandler() {
             @Override

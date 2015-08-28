@@ -176,8 +176,16 @@ public class MyGcmListenerService   extends GcmListenerService {
 
     public void clear() {
         PreferenceManager.getInstance().clear();
-        //Intent in = new Intent(MyGcmListenerService.this, SplashActivity.class);
-        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, in,PendingIntent.FLAG_ONE_SHOT);
+        PreferenceManager.getInstance().setFirst("");
+        Intent in = new Intent(MyGcmListenerService.this, SplashActivity.class);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, in, PendingIntent.FLAG_ONE_SHOT);
+
+        try{
+            pendingIntent.send();
+        }catch (Exception e) {
+
+        }
     }
 
     private void authAccept(){
