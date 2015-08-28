@@ -39,12 +39,24 @@ public class BackgroundActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.backgroundlayout);
 
-		if(imageList.isEmpty()) {
-			putDataInList();
-		}
 
-		if(lastSelect != 0)
-			imageList.get(lastSelect).setSubItemID(R.mipmap.imsi);
+		imageList.add(new GridItem(0, R.mipmap.imsi2));
+		imageList.add(new GridItem(R.mipmap.bg00, 0));
+		imageList.add(new GridItem(R.mipmap.bg01, 0));
+		imageList.add(new GridItem(R.mipmap.bg02, 0));
+		imageList.add(new GridItem(R.mipmap.bg03, 0));
+		imageList.add(new GridItem(R.mipmap.bg04, 0));
+		imageList.add(new GridItem(R.mipmap.bg05, 0));
+		imageList.add(new GridItem(R.mipmap.bg06, 0));
+		imageList.add(new GridItem(R.mipmap.bg07, 0));
+		imageList.add(new GridItem(R.mipmap.bg08, 0));
+		imageList.add(new GridItem(R.mipmap.bg09, 0));
+		imageList.add(new GridItem(R.mipmap.bg10, 0));
+
+
+
+		//if(lastSelect != 0)
+		//	imageList.get(lastSelect).setSubItemID(R.mipmap.imsi);
 
 		//hide actionbar
 		getSupportActionBar().hide();
@@ -65,26 +77,28 @@ public class BackgroundActivity extends AppCompatActivity {
 		final GridView grid_bgselect = (GridView) findViewById(R.id.bg_grid_imageSelect);
 		adapter = new GridImageAdapter(this, imageList, R.layout.item_backgroundgrid);
 		grid_bgselect.setAdapter(adapter);
-		grid_bgselect.setOnItemClickListener(itemClickListener);
+	//	grid_bgselect.setOnItemClickListener(itemClickListener);
 	}
 
 
 	private void putDataInList(){
 		imageList.add(new GridItem(0, R.mipmap.imsi2));
-		imageList.add(new GridItem(R.mipmap.main_background, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg00, 0));
+		imageList.add(new GridItem(R.mipmap.bg01, 0));
+		imageList.add(new GridItem(R.mipmap.bg02, 0));
+		imageList.add(new GridItem(R.mipmap.bg03, 0));
+		imageList.add(new GridItem(R.mipmap.bg04, 0));
+		imageList.add(new GridItem(R.mipmap.bg05, 0));
+		imageList.add(new GridItem(R.mipmap.bg06, 0));
+		imageList.add(new GridItem(R.mipmap.bg07, 0));
+		imageList.add(new GridItem(R.mipmap.bg08, 0));
+		imageList.add(new GridItem(R.mipmap.bg09, 0));
+		imageList.add(new GridItem(R.mipmap.bg10, 0));
 	}
 
 
 
-	AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+	/*AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			if (position == 0) {
@@ -125,6 +139,6 @@ public class BackgroundActivity extends AppCompatActivity {
 			ImageLoader.getInstance().clearDiskCache();
 			adapter.notifyDataSetChanged();
 		}
-	}
+	}*/
 
 }

@@ -57,12 +57,13 @@ public class GridImageAdapter extends BaseAdapter {
 
         custom_main_item.setImageResource(imageList.get(position).getMainItemID());
 
+        /*
         if(layout == R.layout.item_backgroundgrid && position == 0 && PreferenceManager.getInstance().getBgSelect() == 0){
             ImageLoader.getInstance().displayImage("file:///storage/emulated/0//background.jpg", custom_main_item, MyApplication.getDisplayImageOptions());
         }
 
         sub_item.setImageResource(imageList.get(position).getSubItemID());
-
+        */
         return convertView;
     }
 }
