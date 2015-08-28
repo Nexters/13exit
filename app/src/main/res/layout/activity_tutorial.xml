@@ -28,7 +28,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/tutorial01">
+            android:background="@mipmap/tutorial04">
 
             <Button
                 android:id="@+id/tut_02"
@@ -43,7 +43,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/tutorial02">
+            android:background="@mipmap/tutorial03">
 
             <Button
                 android:id="@+id/tut_03"
@@ -58,7 +58,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/tutorial03">
+            android:background="@mipmap/tutorial02">
 
             <Button
                 android:id="@+id/tut_04"
@@ -73,7 +73,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/tutorial04">
+            android:background="@mipmap/tutorial01">
 
             <Button
                 android:id="@+id/tut_05"
@@ -83,21 +83,5 @@
                 android:layout_alignParentLeft="true"
                 android:background="@android:color/transparent" />
         </RelativeLayout>
-        <!--
-                &lt;!&ndash;tutorial 06&ndash;&gt;
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@mipmap/tutorial">
-
-                    <Button
-                        android:id="@+id/tut_06"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                         />
-                </RelativeLayout>
-                -->
     </ViewFlipper>
 </LinearLayout>
