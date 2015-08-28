@@ -174,6 +174,7 @@ public class NetworkModel {
         params.put("img", img);
         params.put("phone", PreferenceManager.getInstance().getPhonenum());
         params.put("name", PreferenceManager.getInstance().getUserName());
+        params.put("pphone", PreferenceManager.getInstance().getPphoneNum());
 
         client.post(SERVER_URL + "img", params, new AsyncHttpResponseHandler() {
             @Override
