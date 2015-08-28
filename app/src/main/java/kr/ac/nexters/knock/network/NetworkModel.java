@@ -147,6 +147,7 @@ public class NetworkModel {
 	public void setImage(String file, final OnNetworkResultListener<IsSuccess> listener) {
 		RequestParams params = new RequestParams();
 		params.put("phone", PreferenceManager.getInstance().getPhonenum());
+        params.put("name", PreferenceManager.getInstance().getUserName());
 		try {
 			params.put("upfile", new File(file));
 		} catch (FileNotFoundException e) {
@@ -166,6 +167,26 @@ public class NetworkModel {
 			}
 		});
 	}
+
+
+    public void setImg(String img, final OnNetworkResultListener<IsSuccess> listener){
+        RequestParams params = new RequestParams();
+        params.put("img", img);
+        params.put("phone", PreferenceManager.getInstance().getPhonenum());
+        params.put("name", PreferenceManager.getInstance().getUserName());
+
+        client.post(SERVER_URL + "img", params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
 
     public void clear(final OnNetworkResultListener<IsSuccess> listener){
         RequestParams params = new RequestParams();
