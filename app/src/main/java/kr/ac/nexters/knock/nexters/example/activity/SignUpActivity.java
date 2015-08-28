@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +62,13 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void setLayout(){
         et_inputName = (EditText)findViewById(R.id.signup_et_inputname);
+        et_inputName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    et_inputName.setText("");
+            }
+        });
         btn_moveNext = (Button)findViewById(R.id.signup_btn_nextActivity);
         btn_moveNext.setOnClickListener(new View.OnClickListener() {
             @Override

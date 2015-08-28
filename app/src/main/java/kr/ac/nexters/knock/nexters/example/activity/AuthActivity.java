@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -21,7 +22,7 @@ import kr.ac.nexters.knock.tools.PreferenceManager;
 public class AuthActivity extends ActionBarActivity {
 
     private Button btn_nextMove;
-    private EditText et_inputPartnerNum;
+    private EditText et_inputPartnerNum, et_inputMyNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,16 @@ public class AuthActivity extends ActionBarActivity {
 
     public void setLayout(){
         //이거 예외처리 해야함. 문자 못받게 하고, 길이 체크하고
+        et_inputMyNum = (EditText)findViewById(R.id.auth_tv_pnum_guid);
+        et_inputMyNum.setText("010"+PreferenceManager.getInstance().getPhonenum());
         et_inputPartnerNum = (EditText)findViewById(R.id.auth_et_partner_number);
+        et_inputPartnerNum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    et_inputPartnerNum.setText("");
+            }
+        });
         btn_nextMove = (Button)findViewById(R.id.auth_btn_nextActivity);
         btn_nextMove.setOnClickListener(new View.OnClickListener() {
 

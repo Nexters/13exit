@@ -31,7 +31,7 @@ public class BackgroundActivity extends AppCompatActivity {
 	ImageLoader imageLoader;
 	static ArrayList<GridItem> imageList = new ArrayList<>();
 	GridImageAdapter adapter;
-	static int lastSelect = 0;
+	static int lastSelect = PreferenceManager.getInstance().getBgSelect();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,9 @@ public class BackgroundActivity extends AppCompatActivity {
 		if(imageList.isEmpty()) {
 			putDataInList();
 		}
+
+		if(lastSelect != 0)
+			imageList.get(lastSelect).setSubItemID(R.mipmap.imsi);
 
 		//hide actionbar
 		getSupportActionBar().hide();
@@ -66,19 +69,17 @@ public class BackgroundActivity extends AppCompatActivity {
 	}
 
 
-
-
 	private void putDataInList(){
-		imageList.add(new GridItem(R.mipmap.btn_background_and_plus, -1));
-		imageList.add(new GridItem(R.mipmap.main_background, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
-		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, -1));
+		imageList.add(new GridItem(0, R.mipmap.imsi2));
+		imageList.add(new GridItem(R.mipmap.main_background, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
+		imageList.add(new GridItem(R.mipmap.bg_backgroundpicture_area, 0));
 	}
 
 
@@ -87,22 +88,25 @@ public class BackgroundActivity extends AppCompatActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			if (position == 0) {
-				ImageLoader.getInstance().clearMemoryCache();
-				ImageLoader.getInstance().clearDiskCache();
-
 				Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 				photoPickerIntent.setType("image/*");
 				photoPickerIntent.putExtra("crop", "true");
 				photoPickerIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
 				photoPickerIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 				startActivityForResult(photoPickerIntent, REQUEST_CODE_CROP);
+			} else if(position == lastSelect){
+				return;
 			} else {
 				PreferenceManager.getInstance().setBgImg(String.valueOf(imageList.get(position).getMainItemID()));
 				imageList.get(position).setSubItemID(R.mipmap.imsi);
+				adapter.notifyDataSetChanged();
 			}
-			imageList.get(lastSelect).setSubItemID(-1);
+
+			PreferenceManager.getInstance().setBgSelect(position);
+			if (lastSelect != 0){
+				imageList.get(lastSelect).setSubItemID(0);
+			}
 			lastSelect = position;
-			adapter.notifyDataSetChanged();
 		}
 	};
 
@@ -117,8 +121,10 @@ public class BackgroundActivity extends AppCompatActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == REQUEST_CODE_CROP && resultCode == Activity.RESULT_OK) {
 			PreferenceManager.getInstance().setBgImg(getTempUri().toString());
+			ImageLoader.getInstance().clearMemoryCache();
+			ImageLoader.getInstance().clearDiskCache();
+			adapter.notifyDataSetChanged();
 		}
 	}
-
 
 }

@@ -11,7 +11,9 @@ import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 import kr.ac.nexters.knock.R;
 import kr.ac.nexters.knock.network.IsSuccess;
@@ -25,21 +27,25 @@ import kr.ac.nexters.knock.tools.PreferenceManager;
 
 public class AuthReqActivity extends Activity {
 
-    private Button btn_cancel;
+    private Button btn_accept;
+    private TextView authreq_tv;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_auth_req);
 
         intent = this.getIntent();
+        PreferenceManager.getInstance().setPname(intent.getStringExtra("pname"));
 
-        btn_cancel = (Button)findViewById(R.id.btn_cancel);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        authreq_tv = (TextView)findViewById(R.id.authReq_tv);
+        authreq_tv.setText(PreferenceManager.getInstance().getPname() + "님이 연결을 요청하셨습니다.\n수락하시겠습니까?");
+
+        btn_accept = (Button)findViewById(R.id.authReq_btn_accept);
+        btn_accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                PreferenceManager.getInstance().setPname(intent.getStringExtra("pname"));
 
                 Intent in = new Intent(AuthReqActivity.this, TutorialActivity.class);
                 startActivity(in);

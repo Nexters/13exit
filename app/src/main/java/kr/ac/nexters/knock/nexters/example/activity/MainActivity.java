@@ -1,29 +1,19 @@
 package kr.ac.nexters.knock.nexters.example.activity;
 
-
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-
-import java.util.Objects;
 
 import kr.ac.nexters.knock.R;
 import kr.ac.nexters.knock.menu.BackgroundActivity;
@@ -39,7 +29,6 @@ import kr.ac.nexters.knock.tools.RippleBackground;
 public class MainActivity extends AppCompatActivity {
 
     ImageView myImage, partnerImage, background;
-    String imagePath;
     ImageButton button_heart;
     NetworkModel instance;
 
@@ -51,9 +40,8 @@ public class MainActivity extends AppCompatActivity {
         //use ImageLoader
         //ImageLoader.getInstance().displayImage("URL",partnerImage, MyApplication.getDisplayImageOptions());
 
-        imagePath = Environment.getDataDirectory().getAbsolutePath() + "/data/kr.ac.nexters.knock/files/";
-
         myImage = (ImageView) findViewById(R.id.main_myImg);
+
         partnerImage = (ImageView) findViewById(R.id.main_partnerImg);
         background = (ImageView) findViewById(R.id.main_background);
         button_heart = (ImageButton) findViewById(R.id.main_btn_heart);
@@ -62,15 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("(MA)knock to ", PreferenceManager.getInstance().getPpushId());
 
-        /*
-        button_heart.setOnTouchListener(touchListener);
-        button_heart.setClickable(true);
-        button_heart.setOnDragListener(mDragListener);
-        */
-
 //        //layout wave animation test
 //        animation = (LinearLayout) findViewById(R.id.animation);
-
 
         final RippleBackground rippleBackground=(RippleBackground)findViewById(R.id.main_partnerRoom);
         final Handler handler=new Handler();
@@ -78,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(MainActivity.this, PreferenceManager.getInstance().getPpushId(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, PreferenceManager.getInstance().getPpushId(), Toast.LENGTH_SHORT).show();
 
                 NetworkModel.getInstance().knock(new NetworkModel.OnNetworkResultListener<IsSuccess>() {
                     @Override

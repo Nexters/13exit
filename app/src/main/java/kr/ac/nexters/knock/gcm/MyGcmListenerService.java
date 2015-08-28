@@ -11,6 +11,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -75,8 +76,14 @@ public class MyGcmListenerService   extends GcmListenerService {
      * @param message
      */
     private void sendNotification(String title, String message) {
+
+        if(PreferenceManager.getInstance().getWithVib()){
+
+        }
+
         Intent intent = new Intent(MyGcmListenerService.this, MainActivity.class);
         //intent에 data담아서 넘겨줌 -> 애니메이션 동작
+        intent.putExtra("animation", "");
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
