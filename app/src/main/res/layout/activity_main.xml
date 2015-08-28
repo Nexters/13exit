@@ -7,112 +7,180 @@
         android:id="@+id/main_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@mipmap/bg00" />
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/main_filter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg_userpic_overlay"
+        android:visibility="invisible"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/animating_heart_basic"
+            android:visibility="invisible"
+            android:id="@+id/main_heart_shadow"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="51dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:minHeight="442dp"
+            android:maxHeight="442dp">
 
-        <kr.ac.nexters.knock.tools.RippleBackground
-            android:id="@+id/main_partnerRoom"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            android:padding="0dp"
-            app:rb_color="#fffdfe"
-            app:rb_duration="3000"
-            app:rb_radius="32dp"
-            app:rb_rippleAmount="3"
-            app:rb_scale="3">
-
-            <FrameLayout
+            <kr.ac.nexters.knock.tools.RippleBackground
+                android:id="@+id/main_partnerRoom"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <kr.ac.nexters.knock.tools.ImageViewRounded
-                    android:id="@+id/main_partnerImg"
-                    android:layout_width="114dp"
-                    android:layout_height="114dp"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center" />
-
-                <ImageView
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
-                    android:layout_gravity="center"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/bg_lover_or_me" />
-
-            </FrameLayout>
-
-        </kr.ac.nexters.knock.tools.RippleBackground>
-
-
-        <kr.ac.nexters.knock.tools.RippleBackground
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:rb_color="#fffdfe"
-            app:rb_duration="3000"
-            app:rb_radius="50dp"
-            app:rb_rippleAmount="3"
-            app:rb_scale="3">
-
-            <ImageButton
-                android:id="@+id/main_btn_heart"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@mipmap/btn_heart" />
+                android:layout_weight="1"
+                android:padding="0dp"
+                app:rb_color="#fffdfe"
+                app:rb_duration="3000"
+                app:rb_radius="32dp"
+                app:rb_rippleAmount="3"
+                app:rb_scale="3">
 
-        </kr.ac.nexters.knock.tools.RippleBackground>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
-        <kr.ac.nexters.knock.tools.RippleBackground
-            android:id="@+id/main_myRoom"
+                    <kr.ac.nexters.knock.tools.ImageViewRounded
+                        android:id="@+id/main_partnerImg"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center" />
+
+                    <ImageView
+                        android:layout_width="155dp"
+                        android:layout_height="155dp"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/bg_lover_or_me" />
+
+                    <TextView
+                        android:id="@+id/main_partnerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        android:layout_marginTop="11dp"
+                        android:paddingBottom="10dp"
+                        android:layout_gravity="center_horizontal|bottom" />
+
+                </FrameLayout>
+
+
+            </kr.ac.nexters.knock.tools.RippleBackground>
+
+
+            <kr.ac.nexters.knock.tools.RippleBackground
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:rb_color="#fffdfe"
+                app:rb_duration="3000"
+                app:rb_radius="50dp"
+                app:rb_rippleAmount="3"
+                app:rb_scale="3">
+
+                <ImageButton
+                    android:id="@+id/main_btn_heart"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@mipmap/btn_heart" />
+
+            </kr.ac.nexters.knock.tools.RippleBackground>
+
+
+            <kr.ac.nexters.knock.tools.RippleBackground
+                android:id="@+id/main_myRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:rb_color="#fffdfe"
+                app:rb_duration="3000"
+                app:rb_radius="32dp"
+                app:rb_rippleAmount="3"
+                app:rb_scale="3">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/main_myName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        android:paddingTop="10dp"
+                        android:layout_marginBottom="11dp"
+                        android:layout_gravity="center_horizontal|top" />
+
+
+                    <kr.ac.nexters.knock.tools.ImageViewRounded
+                        android:id="@+id/main_myImg"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center" />
+
+                    <ImageView
+                        android:layout_width="155dp"
+                        android:layout_height="155dp"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/bg_lover_or_me" />
+
+                </FrameLayout>
+
+            </kr.ac.nexters.knock.tools.RippleBackground>
+
+        </LinearLayout>
+
+
+
+
+
+        <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            app:rb_color="#fffdfe"
-            app:rb_duration="3000"
-            app:rb_radius="32dp"
-            app:rb_rippleAmount="3"
-            app:rb_scale="3">
+            android:layout_weight="1"/>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <kr.ac.nexters.knock.tools.ImageViewRounded
-                    android:id="@+id/main_myImg"
-                    android:layout_width="114dp"
-                    android:layout_height="114dp"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center" />
-
-                <ImageView
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
-                    android:layout_gravity="center"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/bg_lover_or_me" />
-
-            </FrameLayout>
-
-        </kr.ac.nexters.knock.tools.RippleBackground>
 
 
     </LinearLayout>
+
+
 
 
 </FrameLayout>

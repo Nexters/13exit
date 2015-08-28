@@ -15,8 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -37,7 +40,7 @@ import kr.ac.nexters.knock.tools.RippleBackground;
 public class MainActivity extends AppCompatActivity{
     public static final String NOTIFY_ACTIVITY_ACTION = "notify_activity";
 
-    ImageView myImage, partnerImage, background;
+    ImageView myImage, partnerImage, background, bg_filter, heartShadow;
     ImageButton button_heart;
     NetworkModel instance;
     Handler handler = new Handler();
@@ -58,15 +61,22 @@ public class MainActivity extends AppCompatActivity{
         Intent intent=new Intent(this.getIntent());
         String animation = intent.getStringExtra("animation");
 
-        if (animation != null && animation.equals("stopRipple")){
+        if (animation != null && animation.equals("stopRipple")) {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    partnerRipple.stopRippleAnimation();
                     myRipple.startRippleAnimation();
                 }
             }, 0);
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    myRipple.stopRippleAnimation();
+                }
+            }, 10000);
         }
+
 
         //backpressed
         backPressCloseHandler = new BackPressCloseHandler(this);
@@ -74,6 +84,8 @@ public class MainActivity extends AppCompatActivity{
 
                 //use ImageLoader
         //ImageLoader.getInstance().displayImage("URL",partnerImage, MyApplication.getDisplayImageOptions());
+
+        bg_filter = (ImageView)findViewById(R.id.main_filter);
 
         myImage = (ImageView) findViewById(R.id.main_myImg);
         myImage.setOnClickListener(new View.OnClickListener() {
@@ -116,10 +128,28 @@ public class MainActivity extends AppCompatActivity{
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        myRipple.stopRippleAnimation();
-                       partnerRipple.startRippleAnimation();
+                        heartShadow = (ImageView) findViewById(R.id.main_heart_shadow);
+                        Animation heartMoveAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.heart_move);
+                        heartShadow.startAnimation(heartMoveAnim);
                     }
                 }, 0);
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        partnerRipple.startRippleAnimation();
+                    }
+                }, 4500);
+
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        partnerRipple.stopRippleAnimation();
+                    }
+                }, 12000);
+
+
             }
         });
 
@@ -130,6 +160,12 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onStart() {
         super.onStart();
+
+        TextView myName = (TextView)findViewById(R.id.main_myName);
+        TextView partnerName = (TextView)findViewById(R.id.main_partnerName);
+        myName.setText(PreferenceManager.getInstance().getUserName());
+        partnerName.setText(PreferenceManager.getInstance().getPname());
+
 
         br = new BroadcastReceiver() {
             @Override
@@ -165,13 +201,16 @@ public class MainActivity extends AppCompatActivity{
 
         //BG
         if(PreferenceManager.getInstance().getBgImg().isEmpty()) {
-
+            bg_filter.setVisibility(View.INVISIBLE);
         } else if (PreferenceManager.getInstance().getBgImg().length() < 15){
             //length말고 다른 방법.
             background.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getBgImg()));
+            bg_filter.setVisibility(View.INVISIBLE);
         }
-        else
+        else {
             ImageLoader.getInstance().displayImage("file:///storage/emulated/0//background.jpg", background, MyApplication.getDisplayImageOptions());
+            bg_filter.setVisibility(View.VISIBLE);
+        }
     }
 
     public void setImg(){

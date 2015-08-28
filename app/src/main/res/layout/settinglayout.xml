@@ -16,7 +16,7 @@
             android:id="@+id/title_backbtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3">
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -32,17 +32,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:text="설정"
                 android:textColor="#ff8a65"
                 android:textSize="18sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -61,9 +65,9 @@
 
             <ImageView
                 android:layout_width="38dp"
-                android:layout_height="13dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="21dp"
                 android:src="@mipmap/text_my_account" />
 
             <TextView
@@ -88,7 +92,7 @@
                 android:layout_width="63dp"
                 android:layout_height="13dp"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:src="@mipmap/text_linked_account" />
 
             <TextView
@@ -96,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="11dp"
                 android:textColor="#FF8964" />
 
         </LinearLayout>
@@ -128,7 +132,7 @@
                     android:layout_width="48dp"
                     android:layout_height="13dp"
                     android:layout_marginLeft="21dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="26dp"
                     android:src="@mipmap/text_push" />
 
             </LinearLayout>
@@ -169,7 +173,7 @@
                     android:layout_width="228dp"
                     android:layout_height="13dp"
                     android:layout_marginLeft="21dp"
-                    android:layout_marginTop="23dp"
+                    android:layout_marginTop="18dp"
                     android:src="@mipmap/text_sound_option" />
 
             </LinearLayout>
@@ -186,7 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="22dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:src="@mipmap/btn_check" />
 
             </LinearLayout>
@@ -219,7 +223,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="21dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="26dp"
                     android:src="@mipmap/text_app_information" />
 
             </LinearLayout>

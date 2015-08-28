@@ -77,11 +77,13 @@
                 android:layout_width="248dp"
                 android:layout_height="56dp"
                 android:layout_marginBottom="115dp"
-                android:text="이름을 입력해주세요"
-                android:gravity="center"
+                android:paddingLeft="58dp"
+                android:hint="이름을 입력해주세요"
+                android:paddingBottom="2dp"
                 android:imeOptions="actionDone"
+                android:maxLength="10"
                 android:textColor="#f48967"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:background="@mipmap/bg_name_box_plus_dingbat"
                 android:id="@+id/signup_et_inputname"/>
 

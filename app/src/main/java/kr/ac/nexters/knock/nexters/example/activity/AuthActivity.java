@@ -51,13 +51,6 @@ public class AuthActivity extends ActionBarActivity {
         et_inputMyNum = (EditText)findViewById(R.id.auth_tv_pnum_guid);
         et_inputMyNum.setText("010"+PreferenceManager.getInstance().getPhonenum());
         et_inputPartnerNum = (EditText)findViewById(R.id.auth_et_partner_number);
-        et_inputPartnerNum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus)
-                    et_inputPartnerNum.setText("");
-            }
-        });
         et_inputPartnerNum.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
