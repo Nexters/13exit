@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 import kr.ac.nexters.knock.R;
@@ -20,13 +21,14 @@ public class AcceptAuthActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_accept_auth);
 
         btn_accept = (Button)findViewById(R.id.auth_btn_accept);
         btn_accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferenceManager.getInstance().setFirst("regok");
+                PreferenceManager.getInstance().setFirst("needTutorial");
                 Intent in = new Intent(AcceptAuthActivity.this, TutorialActivity.class);
                 startActivity(in);
                 finish();

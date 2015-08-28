@@ -35,12 +35,10 @@
 
     </LinearLayout>
 
-
-    <ImageView
-        android:layout_width="match_parent"
+    <View
+        android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_margin="0dp"
-        android:src="@mipmap/bg_title_lineup_plus80px" />
+        android:background="#FF8964"/>
 
 
     <LinearLayout

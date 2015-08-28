@@ -259,5 +259,23 @@ public class PreferenceManager {
     }
 
 
+    //background select
+    private static final String BGSELECT = "bgSelect";
+    private int bgSelect = 1;
+
+    public void setBgSelect(int bgSelect){
+        this.bgSelect = bgSelect;
+        mEditor.putInt(BGSELECT, bgSelect);
+        mEditor.commit();
+    }
+
+    public int getBgSelect(){
+        if(bgSelect == 1){
+            bgSelect = mPrefs.getInt(BGSELECT, 1);
+        }
+        return bgSelect;
+    }
+
+
 
 }

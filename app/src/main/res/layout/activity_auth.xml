@@ -1,65 +1,119 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/auth_bg"
-    tools:context="kr.ac.nexters.knock.nexters.example.activity.AuthActivity">
+    android:background="@android:color/white"
+    tools:context="kr.ac.nexters.knock.nexters.example.activity.SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2">
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:paddingLeft="10dp"
-        android:background="@mipmap/auth_edit"
-        android:gravity="center_vertical"
-        android:text="01064184227"
-        android:id="@+id/auth_tv_pnum_guid" />
-
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="50dp"
-        android:paddingLeft="10dp"
-        android:inputType="number"
-        android:background="@mipmap/auth_edit"
-        android:id="@+id/auth_et_partner_number" />
-
-    <Button
-        android:layout_marginTop="50dp"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@mipmap/auth_btn"
-        android:id="@+id/auth_btn_nextActivity" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_gravity="center"
-        android:text="표시된 휴대폰 번호가 사실과 다른가요?"/>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></LinearLayout>
+            android:layout_height="162dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/bg_down_background_2"/>
 
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="54dp"
+                android:layout_marginTop="53dp"
+                android:src="@mipmap/bg_step_2"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="29dp"
+                android:src="@mipmap/bg_logo"/>
+
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_marginBottom="27dp"
+                android:src="@mipmap/btn_profile_plus"/>
+
+            <EditText
+                android:layout_width="248dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="65dp"
+                android:text="내 번호 보여주기"
+                android:textSize="15sp"
+                android:textColor="#f48967"
+                android:editable="false"
+                android:background="@mipmap/bg_name_box_plus_dingbat"
+                android:id="@+id/auth_tv_pnum_guid"/>
+
+            <EditText
+                android:layout_width="248dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="40dp"
+                android:paddingLeft="65dp"
+                android:text="상대방 번호를 입력하세요"
+                android:textSize="15sp"
+                android:textColor="#f48967"
+                android:background="@mipmap/bg_name_box_plus_dingbat"
+                android:id="@+id/auth_et_partner_number"/>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|bottom">
+
+
+            <ImageView
+                android:layout_width="104dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="56dp"
+                android:src="@mipmap/bg_down_background_line"/>
+
+
+            <Button
+                android:layout_width="57dp"
+                android:layout_height="57dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="14dp"
+                android:background="@mipmap/btn_connecting"
+                android:id="@+id/auth_btn_nextActivity"/>
+
+
+            <ImageView
+                android:layout_width="104dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="56dp"
+                android:src="@mipmap/bg_down_background_line"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

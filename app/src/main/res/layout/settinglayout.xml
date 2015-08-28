@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/profile_title"
+        android:id="@+id/setting_title"
         android:layout_width="match_parent"
         android:layout_height="51dp"
         android:background="#FDFDFD"

@@ -1,43 +1,104 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/sign_up_bg"
+    android:background="@android:color/white"
     tools:context="kr.ac.nexters.knock.nexters.example.activity.SignUpActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="233dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/bg_down_background"/>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_weight="1">
+        android:gravity="bottom">
 
-    <EditText
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup_et_inputname"
-        android:hint="@string/input_name_hint"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@mipmap/sign_up_btn"
-        android:id="@+id/signup_btn_nextActivity" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="54dp"
+                android:layout_marginTop="53dp"
+                android:src="@mipmap/bg_step_1"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="29dp"
+                android:src="@mipmap/bg_logo"/>
+
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_marginBottom="27dp"
+                android:src="@mipmap/btn_profile_plus"/>
+
+            <EditText
+                android:layout_width="248dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="115dp"
+                android:paddingLeft="65dp"
+                android:text="이름을 입력해주세요"
+                android:textColor="#f48967"
+                android:background="@mipmap/bg_name_box_plus_dingbat"
+                android:id="@+id/signup_et_inputname"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|bottom">
+
+
+            <ImageView
+                android:layout_width="104dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="56dp"
+                android:src="@mipmap/bg_down_background_line"/>
+
+
+            <Button
+                android:layout_width="57dp"
+                android:layout_height="57dp"
+                android:layout_marginBottom="14dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:background="@mipmap/btn_next"
+                android:id="@+id/signup_btn_nextActivity"/>
+
+
+            <ImageView
+                android:layout_width="104dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="56dp"
+                android:src="@mipmap/bg_down_background_line"/>
+
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
 
-</LinearLayout>
+</FrameLayout>

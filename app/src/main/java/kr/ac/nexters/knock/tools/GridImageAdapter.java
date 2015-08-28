@@ -7,7 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import kr.ac.nexters.knock.R;
 
@@ -54,12 +57,11 @@ public class GridImageAdapter extends BaseAdapter {
 
         custom_main_item.setImageResource(imageList.get(position).getMainItemID());
 
-        if(imageList.get(position).getSubItemID() != -1){
-            sub_item.setVisibility(View.VISIBLE);
-        } else {
-            sub_item.setVisibility(View.INVISIBLE);
+        if(layout == R.layout.item_backgroundgrid && position == 0 && PreferenceManager.getInstance().getBgSelect() == 0){
+            ImageLoader.getInstance().displayImage("file:///storage/emulated/0//background.jpg", custom_main_item, MyApplication.getDisplayImageOptions());
         }
 
+        sub_item.setImageResource(imageList.get(position).getSubItemID());
 
         return convertView;
     }

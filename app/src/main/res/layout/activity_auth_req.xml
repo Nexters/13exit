@@ -1,22 +1,74 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="264dp"
+    android:layout_height="210dp"
     android:orientation="vertical"
+    android:background="@mipmap/bg_popup_background"
     tools:context="kr.ac.nexters.knock.dialog.AuthReqActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="요청 승인"
-        android:id="@+id/btn_cancel"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="141dp"
-        android:layout_marginEnd="141dp" />
+    <LinearLayout
+        android:layout_width="264dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:src="@mipmap/bg_popup_circle"
+        android:layout_marginTop="17dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="158dp"
+        android:layout_height="33dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:text="HelloWorld"
+        android:textColor="#f48967"
+        android:id="@+id/authReq_tv" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="264dp"
+        android:layout_height="39dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        <Button
+            android:layout_width="119dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="6dp"
+            android:background="@mipmap/btn_rejection"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end">
+
+        <Button
+            android:layout_width="119dp"
+            android:layout_height="33dp"
+            android:background="@mipmap/btn_accept"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="6dp"
+            android:id="@+id/authReq_btn_accept"/>
+
+            </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>
