@@ -1,6 +1,9 @@
 package kr.ac.nexters.knock.nexters.example.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -19,6 +22,7 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import kr.ac.nexters.knock.R;
+import kr.ac.nexters.knock.gcm.MyGcmListenerService;
 import kr.ac.nexters.knock.menu.BackgroundActivity;
 import kr.ac.nexters.knock.menu.ProfileActivity;
 import kr.ac.nexters.knock.menu.SettingActivity;
@@ -30,7 +34,8 @@ import kr.ac.nexters.knock.tools.MyApplication;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 import kr.ac.nexters.knock.tools.RippleBackground;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
+    public static final String NOTIFY_ACTIVITY_ACTION = "notify_activity";
 
     ImageView myImage, partnerImage, background;
     ImageButton button_heart;
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     //backpressed
     private BackPressCloseHandler backPressCloseHandler;
+
+    private BroadcastReceiver br;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +132,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        br = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                setImg();
+            }
+        };
+
+        IntentFilter filter = new IntentFilter(NOTIFY_ACTIVITY_ACTION);
+        registerReceiver(br, filter);
+
         //MYIMG
         if(PreferenceManager.getInstance().getMyImg().isEmpty()) {
 
@@ -137,10 +154,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Partener Img
-        if(PreferenceManager.getInstance().getPimg().length() < 15){
+        if(PreferenceManager.getInstance().getPimg().isEmpty()) {
 
+        }else if(PreferenceManager.getInstance().getPimg().length() < 15){
+            partnerImage.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getPimg()));
         }else {
-
+            ImageLoader.getInstance().displayImage(PreferenceManager.getInstance().getPimg(), partnerImage, MyApplication.getDisplayImageOptions());
         }
 
 
@@ -154,11 +173,18 @@ public class MainActivity extends AppCompatActivity {
         }
         else
             ImageLoader.getInstance().displayImage("file:///storage/emulated/0//background.jpg", background, MyApplication.getDisplayImageOptions());
-
-
-
     }
 
+    public void setImg(){
+        //Partener Img
+        if(PreferenceManager.getInstance().getPimg().isEmpty()) {
+
+        }else if(PreferenceManager.getInstance().getPimg().length() < 15){
+            partnerImage.setImageResource(Integer.parseInt(PreferenceManager.getInstance().getPimg()));
+        }else {
+            ImageLoader.getInstance().displayImage(PreferenceManager.getInstance().getPimg(), partnerImage, MyApplication.getDisplayImageOptions());
+        }
+    }
 
     // Menu
     public boolean onCreateOptionsMenu(Menu menu) {

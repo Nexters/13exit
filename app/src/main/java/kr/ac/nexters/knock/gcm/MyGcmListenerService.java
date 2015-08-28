@@ -67,7 +67,10 @@ public class MyGcmListenerService   extends GcmListenerService {
             Log.i("Noti", "accept");
         }else if(type.equals("clear")) {
             clear();
-        }else{
+        }else if(type.equals("img")){
+            setImg(message);
+        }
+        else{
             sendNotification(title, message);
             Log.i("Noti", "msg");
         }
@@ -186,6 +189,14 @@ public class MyGcmListenerService   extends GcmListenerService {
         }catch (Exception e) {
 
         }
+    }
+
+
+    public void setImg(String img) {
+        PreferenceManager.getInstance().setPimg(img);
+        Intent bi = new Intent();
+        bi.setAction(MainActivity.NOTIFY_ACTIVITY_ACTION);
+        sendBroadcast(bi);
     }
 
     private void authAccept(){
