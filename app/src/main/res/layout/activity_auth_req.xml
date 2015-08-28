@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="264dp"
-    android:layout_height="210dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@mipmap/bg_popup_background"
     tools:context="kr.ac.nexters.knock.dialog.AuthReqActivity">
@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="264dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -22,10 +22,12 @@
 
     <TextView
         android:layout_width="158dp"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:text="HelloWorld"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="13sp"
+        android:gravity="center"
         android:textColor="#f48967"
         android:id="@+id/authReq_tv" />
 
