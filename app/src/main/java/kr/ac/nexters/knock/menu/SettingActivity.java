@@ -19,6 +19,8 @@ import kr.ac.nexters.knock.nexters.example.activity.DevInfoActivity;
 import kr.ac.nexters.knock.tools.PreferenceManager;
 
 public class SettingActivity extends AppCompatActivity {
+
+	private ImageView btn_push, btn_vib;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class SettingActivity extends AppCompatActivity {
 		LinearLayout appInfo = (LinearLayout)findViewById(R.id.setting_layout_appInfo);
 		LinearLayout devInfo = (LinearLayout)findViewById(R.id.setting_layout_devInfo);
 		LinearLayout delAccount = (LinearLayout)findViewById(R.id.setting_layout_delAccount);
+		btn_push = (ImageView)findViewById(R.id.setting_btn_push);
+		btn_vib = (ImageView)findViewById(R.id.setting_btn_vib);
+
 
 
 		setPush.setOnClickListener(pushListener);
@@ -62,13 +67,23 @@ public class SettingActivity extends AppCompatActivity {
 
 	}
 
+	@Override
+	protected void onStart() {
+		super.onStart();
+
+		if(!PreferenceManager.getInstance().getPushUse())
+			btn_push.setImageResource(R.mipmap.btn_no_check);
+
+		if(!PreferenceManager.getInstance().getWithVib())
+			btn_vib.setImageResource(R.mipmap.btn_no_check);
+	}
+
+
 
 	//푸쉬 알림을 받을지 여부
 	View.OnClickListener pushListener = new View.OnClickListener(){
 		@Override
 		public void onClick(View v) {
-			ImageView btn_push = (ImageView)findViewById(R.id.setting_btn_push);
-
 			if(PreferenceManager.getInstance().getPushUse()) {
 				btn_push.setImageResource(R.mipmap.btn_no_check);
 				PreferenceManager.getInstance().setPushUse(false);
@@ -83,8 +98,6 @@ public class SettingActivity extends AppCompatActivity {
 	View.OnClickListener vibListener = new View.OnClickListener(){
 		@Override
 		public void onClick(View v) {
-			ImageView btn_vib = (ImageView)findViewById(R.id.setting_btn_vib);
-
 			if(PreferenceManager.getInstance().getWithVib()) {
 				btn_vib.setImageResource(R.mipmap.btn_no_check);
 				PreferenceManager.getInstance().setWithVib(false);

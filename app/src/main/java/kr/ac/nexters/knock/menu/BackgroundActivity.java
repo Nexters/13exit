@@ -46,7 +46,7 @@ public class BackgroundActivity extends AppCompatActivity {
         }
 
         if (lastSelect != 0)
-            imageList.get(lastSelect).setSubItemID(R.mipmap.imsi);
+            imageList.get(lastSelect).setSubItemID(R.mipmap.marker_bg_select);
 
         //hide actionbar
         getSupportActionBar().hide();
@@ -72,7 +72,7 @@ public class BackgroundActivity extends AppCompatActivity {
 
 
     private void putDataInList() {
-        imageList.add(new GridItem(0, R.mipmap.imsi2));
+        imageList.add(new GridItem(0, R.mipmap.marker_bg_select2));
         imageList.add(new GridItem(R.mipmap.bg00, 0));
         imageList.add(new GridItem(R.mipmap.bg01, 0));
         imageList.add(new GridItem(R.mipmap.bg02, 0));
@@ -98,7 +98,7 @@ public class BackgroundActivity extends AppCompatActivity {
                 return;
             } else {
                 PreferenceManager.getInstance().setBgImg(String.valueOf(imageList.get(position).getMainItemID()));
-                imageList.get(position).setSubItemID(R.mipmap.imsi);
+                imageList.get(position).setSubItemID(R.mipmap.marker_bg_select);
                 adapter.notifyDataSetChanged();
             }
 

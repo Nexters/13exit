@@ -15,10 +15,12 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -75,12 +77,23 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(ProfileActivity.this);
-                alert.setTitle("Title");
-                alert.setMessage("Message");
+                alert.setTitle("이름 재설정");
+                alert.setMessage("재설정할 이름을 입력해주세요.");
 
                 // Set an EditText view to get user input
                 final EditText input = new EditText(ProfileActivity.this);
+
+                input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(10) });
                 input.setText(PreferenceManager.getInstance().getUserName());
+                input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
+                        return true;
+                    }
+                });
+
                 alert.setView(input);
 
                 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

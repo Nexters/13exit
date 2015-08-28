@@ -72,13 +72,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void setLayout(){
         et_inputName = (EditText)findViewById(R.id.signup_et_inputname);
-        et_inputName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus)
-                    et_inputName.setText("");
-            }
-        });
         et_inputName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
