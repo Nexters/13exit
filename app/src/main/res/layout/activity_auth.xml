@@ -7,7 +7,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/auth_layout"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,11 +40,11 @@
                 android:layout_marginTop="88dp"
                 android:gravity="center">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/bg_step_2"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/bg_step_2"/>
 
             </LinearLayout>
 
@@ -79,9 +81,10 @@
                 android:layout_width="248dp"
                 android:layout_height="56dp"
                 android:layout_marginBottom="15dp"
-                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:paddingLeft="58dp"
                 android:imeOptions="actionDone"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:textColor="#f48967"
                 android:editable="false"
                 android:background="@mipmap/bg_name_box_plus_dingbat"
@@ -91,10 +94,12 @@
                 android:layout_width="248dp"
                 android:layout_height="56dp"
                 android:layout_marginBottom="40dp"
-                android:gravity="center"
+                android:paddingBottom="3dp"
+                android:paddingLeft="58dp"
                 android:imeOptions="actionDone"
-                android:text="상대방 번호를 입력하세요"
-                android:textSize="15sp"
+                android:hint="상대방 번호를 입력하세요"
+                android:maxLength="11"
+                android:textSize="12sp"
                 android:textColor="#f48967"
                 android:inputType="number"
                 android:background="@mipmap/bg_name_box_plus_dingbat"

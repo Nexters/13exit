@@ -81,6 +81,9 @@ public class BackgroundActivity extends AppCompatActivity {
         imageList.add(new GridItem(R.mipmap.bg05, 0));
         imageList.add(new GridItem(R.mipmap.bg06, 0));
         imageList.add(new GridItem(R.mipmap.bg07, 0));
+        imageList.add(new GridItem(R.mipmap.bg08, 0));
+        imageList.add(new GridItem(R.mipmap.bg09, 0));
+        imageList.add(new GridItem(R.mipmap.bg10, 0));
     }
 
 
