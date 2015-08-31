@@ -7,7 +7,7 @@ Application Description.
 - Designer - 김예빈(M), 박철완, 조영배
 
 # Developer Enviroment
-- Client : Android(API ??), Android Studio v#.#.#
+- Client : Android(API 21), Android Studio v1.3.2
 - Server : AWS(ec2 - ubuntu) / Node.js + express.js  / mySql
 
 # Used android library
@@ -25,3 +25,7 @@ compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 ```
 
 # Module in Server
+- connect-multiparty - Multipart parsing middleware for connect using multiparty.
+- easyimage - A promise-based, user-friendly module for processing images in Node.js.
+- node-gcm - Node.JS wrapper library-port for Google Cloud Messaging for Android.
+- mysql - A node.js driver for mysql.
