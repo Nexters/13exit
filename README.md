@@ -6,7 +6,7 @@ Application Description.
 - Developer - 김용성, 윤도현, 민지영
 - Designer - 김예빈(M), 박철완, 조영배
 
-# Developer Enviroment
+# Development Environment
 - Client : Android(API 21), Android Studio v1.3.2
 - Server : AWS(ec2 - ubuntu) / Node.js + express.js  / mySql
 
